@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import MobileLeftMenuSlider from '@material-ui/core/Drawer';
 import {
 	AppBar,
 	Toolbar,
@@ -29,14 +30,11 @@ const useStyles = makeStyles((theme) => ({
 	menuSliderContainer: {
 		width: 250,
 		background: '#DDDDDD',
-		height: '30rem',
+		height: '100%',
 	},
-	// avatar : {
-	// 	display: "block",
-	// 	margin: "0.5rem auto",
-	// 	width: theme.spacing(13),
-	// 	height:theme.spacing(13)
-	// }
+	listTextColor: {
+		color: '#FFFFFF',
+	},
 }));
 
 const menuItems = [
@@ -55,30 +53,53 @@ const menuItems = [
 ];
 
 function Navbar() {
+	const [state, setState] = useState({
+		left: false,
+	});
+	const toggleSlider = (slider, open) => () => {
+		setState({ ...state, [slider]: open });
+	};
+
 	const classes = useStyles();
+
+	const sideList = (slider) => (
+		<Box
+			className={classes.menuSliderContainer}
+			component='div'
+			onClick={toggleSlider(slider, false)}>
+			<Divider />
+			<List>
+				{menuItems.map((isItem, key) => (
+					<ListItem button key={key}>
+						<ListItemIcon className={classes.listTextColor}>
+							{isItem.listIcon}
+						</ListItemIcon>
+						<ListItemText
+							className={classes.listTextColor}
+							primary={isItem.listText}
+						/>
+					</ListItem>
+				))}
+			</List>
+		</Box>
+	);
 	return (
 		<>
-			<Box className={classes.menuSliderContainer} component='div'>
-				{/* <Avatar  className={classes.avatar} src='' alt='' /> */}
-				<Divider />
-				<List>
-					{menuItems.map((isItem, key) => (
-						<ListItem button key={key}>
-							<ListItemIcon>{isItem.listIcon}</ListItemIcon>
-							<ListItemText primary={isItem.listText} />
-						</ListItem>
-					))}
-				</List>
-			</Box>
 			<Box component='nav'>
 				<AppBar position='static' style={{ background: '#0074D9' }}>
 					<Toolbar>
-						<IconButton>
+						<IconButton onClick={toggleSlider('left', true)}>
 							<ArrowBack style={{ color: '#FFFFFF' }} />
 						</IconButton>
 						<Typography variant='h5' style={{ color: '#FFFFFF' }}>
 							Random
 						</Typography>
+						<MobileLeftMenuSlider
+							anchor='left'
+							open={state.left}
+							onClose={toggleSlider('left', false)}>
+							{sideList('left')}
+						</MobileLeftMenuSlider>
 					</Toolbar>
 				</AppBar>
 			</Box>
