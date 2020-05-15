@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MobileLeftMenuSlider from '@material-ui/core/Drawer';
+import {Link} from "react-router-dom"
 import {
 	AppBar,
 	Toolbar,
@@ -8,7 +9,6 @@ import {
 	IconButton,
 	ListItemText,
 	ListItemIcon,
-	Avatar,
 	Divider,
 	List,
 	Typography,
@@ -20,9 +20,9 @@ import {
 	AssignmentInd,
 	Home,
 	Apps,
-	ContactMail,
 	Bookmark,
 	Inbox,
+	People,
 } from '@material-ui/icons';
 
 // CSS STYLES
@@ -41,14 +41,16 @@ const menuItems = [
 	{
 		listIcon: <Home />,
 		listText: 'Home',
+		listPath: "/"
 	},
 	{
 		listIcon: <Bookmark />,
-		listText: 'random1',
+		listText: 'Bookmarks',
+		listPath: "bookmark"
 	},
 	{
-		listIcon: <Inbox />,
-		listText: 'random1',
+		listIcon: <People />,
+		listText: 'Users Followed',
 	},
 ];
 
@@ -70,7 +72,7 @@ function Navbar() {
 			<Divider />
 			<List>
 				{menuItems.map((isItem, key) => (
-					<ListItem button key={key}>
+					<ListItem button key={key} component={Link} to={isItem.listPath}>
 						<ListItemIcon className={classes.listTextColor}>
 							{isItem.listIcon}
 						</ListItemIcon>
