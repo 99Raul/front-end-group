@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MobileLeftMenuSlider from '@material-ui/core/Drawer';
-import {Link} from "react-router-dom"
+import Footer from '../Footer/Footer';
+import { Link } from 'react-router-dom';
 import {
 	AppBar,
 	Toolbar,
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 		height: '100%',
 	},
 	listTextColor: {
-		color: '#FFFFFF',
+		color: '#000000',
 	},
 }));
 
@@ -41,16 +42,17 @@ const menuItems = [
 	{
 		listIcon: <Home />,
 		listText: 'Home',
-		listPath: "/"
+		listPath: '/',
 	},
 	{
 		listIcon: <Bookmark />,
 		listText: 'Bookmarks',
-		listPath: "bookmark"
+		listPath: 'bookmark',
 	},
 	{
 		listIcon: <People />,
 		listText: 'Users Followed',
+		listPath: 'users',
 	},
 ];
 
@@ -101,6 +103,7 @@ function Navbar() {
 							open={state.left}
 							onClose={toggleSlider('left', false)}>
 							{sideList('left')}
+							<Footer />
 						</MobileLeftMenuSlider>
 					</Toolbar>
 				</AppBar>

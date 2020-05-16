@@ -5,7 +5,7 @@ function Home(props) {
 	return (
 		<div>
 			<Navbar />
-			<h1>hello</h1>
+			<h1>Home Page</h1>
 		</div>
 	);
 }
