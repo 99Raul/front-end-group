@@ -7,13 +7,9 @@ const useStyles = makeStyles((theme) => ({
 		'& > *': {
 			margin: theme.spacing(1),
 			width: '25ch',
-			position:'relative',
-			padding:"2px 20px 8px 1px",
-			display:"flex"
-			
-			
-			
-			
+			position: 'relative',
+			padding: '2px 20px 8px 1px',
+			display: 'flex',
 		},
 	},
 }));
