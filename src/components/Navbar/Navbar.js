@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import MobileLeftMenuSlider from '@material-ui/core/Drawer';
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
+import SearchField from "../Searchbar/Searchbar"
+
 import {
 	AppBar,
 	Toolbar,
@@ -17,7 +19,7 @@ import {
 } from '@material-ui/core';
 
 import {
-	ArrowBack,
+	Menu,
 	AssignmentInd,
 	Home,
 	Apps,
@@ -72,6 +74,7 @@ function Navbar() {
 			component='div'
 			onClick={toggleSlider(slider, false)}>
 			<Divider />
+
 			<List>
 				{menuItems.map((isItem, key) => (
 					<ListItem button key={key} component={Link} to={isItem.listPath}>
@@ -93,11 +96,12 @@ function Navbar() {
 				<AppBar position='static' style={{ background: '#0074D9' }}>
 					<Toolbar>
 						<IconButton onClick={toggleSlider('left', true)}>
-							<ArrowBack style={{ color: '#FFFFFF' }} />
+							<Menu style={{ color: '#FFFFFF' }} />
 						</IconButton>
 						<Typography variant='h5' style={{ color: '#FFFFFF' }}>
-							Random
+							App Name
 						</Typography>
+						<SearchField/>
 						<MobileLeftMenuSlider
 							anchor='left'
 							open={state.left}
