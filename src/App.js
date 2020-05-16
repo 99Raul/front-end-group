@@ -20,8 +20,8 @@ function App() {
 
 	return (
 		<>
-		<ThemeProvider theme={theme}>
 		<Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<Route exact path='/' component={Home} />
 			<Route path='/bookmark' component={Bookmark} />
