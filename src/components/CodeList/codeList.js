@@ -1,0 +1,38 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+function CodeList() {
+	const [codes, setCode] = useState([]);
+	const [error, setError] = useState(false);
+
+	useEffect(() => {
+		fetch(`http://localhost:4000/`)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+				setCode(data);
+			})
+			.catch(() => {
+				setError(true);
+			});
+	}, []);
+
+	if (error) {
+		return <div>There was an error retrieving the code</div>;
+	}
+
+	return (
+		<div>
+			{codes.map((code) => (
+				<div className='code-card' key={code._id}>
+					<Link to={`/${code._id}`}>
+						<h2>{code.title}</h2>
+						<img src={code.img} alt='' />
+					</Link>
+				</div>
+			))}
+		</div>
+	);
+}
+
+export default CodeList;

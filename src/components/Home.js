@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from './Navbar/Navbar';
-import Card from './Cards/Cards';
+import CodeList from './CodeList/codeList';
 
 function Home(props) {
 	return (
 		<>
-			<Navbar />
+			<h1>Home Page</h1>
+			<CodeList />
 		</>
 	);
 }

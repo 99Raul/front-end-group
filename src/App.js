@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Home from './components/Home';
-import Bookmark from './components/Bookmarks/Bookmark';
-import Navbar from './components/Navbar/Navbar'
+import Bookmark from './components/CreateCard/createCard';
+import Navbar from './components/Navbar/Navbar';
 import { Route } from 'react-router-dom';
-import Users from './components/Users.js/Users';
+import Users from './components/CardInfo/cardInfo';
 import Switch from '@material-ui/core/Switch';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
@@ -23,9 +23,12 @@ function App() {
 			<Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
+				<Route path='*' component={Navbar} />
 				<Route exact path='/' component={Home} />
 				<Route path='/bookmark' component={Bookmark} />
 				<Route path='/users' component={Users} />
+				<Route path='/:id' />
+				<Route path='/:id/edit' />
 			</ThemeProvider>
 		</>
 	);
