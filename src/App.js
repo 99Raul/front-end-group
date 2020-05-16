@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Home from './components/Home';
 import Bookmark from './components/Bookmarks/Bookmark';
+import Navbar from './components/Navbar/Navbar'
 import { Route } from 'react-router-dom';
 import Users from './components/Users.js/Users';
 import Switch from '@material-ui/core/Switch';
