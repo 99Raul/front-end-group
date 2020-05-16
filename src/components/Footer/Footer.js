@@ -2,8 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import { Business, Mail, GitHub } from '@material-ui/icons';
-//import classes from '*.module.css';
-//import business from "@material-ui/icons/business"
+
 
 const useStyles = makeStyles({
 	root: {
