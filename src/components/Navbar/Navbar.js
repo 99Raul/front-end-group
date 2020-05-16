@@ -18,15 +18,7 @@ import {
 	Box,
 } from '@material-ui/core';
 
-import {
-	Menu,
-	AssignmentInd,
-	Home,
-	Apps,
-	Bookmark,
-	Inbox,
-	People,
-} from '@material-ui/icons';
+import { Menu, Home, Bookmark, People } from '@material-ui/icons';
 
 // CSS STYLES
 const useStyles = makeStyles((theme) => ({
