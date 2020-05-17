@@ -27,7 +27,7 @@ function CodeList() {
 				<div className='code-card' key={code._id}>
 					<Link to={`/${code._id}`}>
 						<h2>{code.title}</h2>
-						<img src={code.img} alt='' />
+						<img src={code.img} alt={code.title} />
 					</Link>
 				</div>
 			))}
