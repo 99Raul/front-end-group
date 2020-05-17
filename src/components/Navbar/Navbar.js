@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MobileLeftMenuSlider from '@material-ui/core/Drawer';
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
-import SearchField from '../Searchbar/Searchbar';
+import Searchbar from '../Searchbar/Searchbar';
 
 import {
 	AppBar,
@@ -90,9 +90,9 @@ function Navbar() {
 						<IconButton onClick={toggleSlider('left', true)}>
 							<Menu style={{ color: '#FFFFFF' }} />
 						</IconButton>
-						<SearchField />
+						<Searchbar />
 						<Typography variant='h5' style={{ color: '#FFFFFF' }}>
-							App Name
+						
 						</Typography>
 						<MobileLeftMenuSlider
 							anchor='left'

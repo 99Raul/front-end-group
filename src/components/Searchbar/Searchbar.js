@@ -1,26 +1,22 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import './Searchbar.css';
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		'& > *': {
-			margin: theme.spacing(1),
-			width: '25ch',
-			position: 'relative',
-			padding: '2px 20px 8px 1px',
-			display: 'flex',
-		},
-	},
-}));
-function SearchField() {
-	const classes = useStyles();
-
+function SearchBar(props) {
+	const { handleSubmit, handleChange, searchString } = props;
 	return (
-		<form className={classes.root} noValidate autoComplete='off'>
-			<TextField id='standard-basic' label='Search' />
+		<form onSubmit={handleSubmit} className='form-horizontal'>
+			<input
+				type='text'
+				name='searchString'
+				required
+				placeholder='Search'
+				onChange={handleChange}
+				value={searchString}
+			/>
+			<button type='submit' className='submit'>
+				Submit
+			</button>
 		</form>
 	);
 }
-
-export default SearchField;
+export default SearchBar;
