@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './codeList.css';
 
 function CodeList() {
 	const [codes, setCode] = useState([]);
@@ -27,7 +28,7 @@ function CodeList() {
 				<div className='code-card' key={code._id}>
 					<Link to={`/${code._id}`}>
 						<h2>{code.title}</h2>
-						<img src={code.img} alt={code.title} />
+						<img className='code-card-img' src={code.img} alt={code.title} />
 					</Link>
 				</div>
 			))}

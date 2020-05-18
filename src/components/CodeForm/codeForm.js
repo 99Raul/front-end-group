@@ -33,6 +33,17 @@ function codeForm(props) {
 				name='description'
 				id='description'
 			/>
+
+			<label htmlFor='image'>Image</label>
+			<input
+				type='text'
+				value={props.code.img}
+				onChange={props.handleChange}
+				placeholder='Code image'
+				name='img'
+				id='img'
+			/>
+
 			<button>Submit</button>
 		</form>
 	);

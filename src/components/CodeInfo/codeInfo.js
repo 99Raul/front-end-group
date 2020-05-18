@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import './codeInfo.css';
 
 function CodeInfo(props) {
 	const [code, setCode] = useState(null);
@@ -32,14 +33,17 @@ function CodeInfo(props) {
 	}
 
 	return (
-		<>
+		<div className='code-info-snip'>
 			<h1>Code Snippet</h1>
 			<h2>{code.title}</h2>
 			<p>{code.body}</p>
 			<p>{code.description}</p>
-			<Link to={`${code._id}/edit`}>Edit</Link>
-			<button onClick={deleteCode}>Delete</button>
-		</>
+			<img className='code-info-image' src={code.img} alt={code.description} />
+			<div>
+				<Link to={`${code._id}/edit`}>Edit</Link>
+				<button onClick={deleteCode}>Delete</button>
+			</div>
+		</div>
 	);
 }
 

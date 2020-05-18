@@ -10,11 +10,7 @@ function CodeEdit(props) {
 		fetch(`http://localhost:4000/${props.match.params.id}`)
 			.then((response) => response.json())
 			.then((data) => {
-				setCode({
-					title: data.title,
-					description: data.description,
-					body: data.body,
-				});
+				setCode(data);
 			});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);

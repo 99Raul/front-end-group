@@ -1,0 +1,7 @@
+.code-info-image {
+	width: 70vw;
+}
+.code-info-snip {
+	display: flex;
+	flex-direction: column;
+}
