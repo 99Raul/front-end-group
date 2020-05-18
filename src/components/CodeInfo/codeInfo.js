@@ -7,7 +7,7 @@ function CodeInfo(props) {
 	const [deleted, setDeleted] = useState(false);
 
 	useEffect(() => {
-		fetch(`http://localhost:4000/${props.match.params.id}`)
+		fetch(`http://localhost:4000/show/${props.match.params.id}`)
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);

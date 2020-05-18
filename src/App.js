@@ -29,7 +29,7 @@ function App() {
 			<Switch>
 				<Route exact path='/' component={Home} />
 				<Route path='/create' component={CodeCreate} />
-				<Route exact path='/:id' component={CodeInfo} />
+				<Route exact path='/show/:id' component={CodeInfo} />
 				<Route exact path='/:id/edit' component={CodeEdit} />
 			</Switch>
 			{/* </ThemeProvider> */}
