@@ -24,6 +24,7 @@ function CodeInfo(props) {
 			<h2>{code.title}</h2>
 			<p>{code.body}</p>
 			<p>{code.description}</p>
+			<Link to={`/edit/${code._id}`}>Edit</Link>
 		</>
 	);
 }
