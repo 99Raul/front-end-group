@@ -1,11 +1,13 @@
 import React from 'react';
-import Navbar from './Navbar/Navbar';
-import Card from './Cards/Cards';
+import CodeList from './CodeList/codeList';
+import { Link } from 'react-router-dom';
 
 function Home(props) {
 	return (
 		<>
-			<Navbar />
+			<Link to='/create'>Create New Code</Link>
+			<h1>Home Page</h1>
+			<CodeList />
 		</>
 	);
 }

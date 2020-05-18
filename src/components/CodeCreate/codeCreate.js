@@ -1,0 +1,56 @@
+import React, { useState } from 'react';
+import CodeForm from '../CodeForm/codeForm';
+import { Redirect } from 'react-router-dom';
+
+function CreateCode() {
+	const initialCode = {
+		title: '',
+		body: '',
+		description: '',
+		img: '',
+	};
+	const [code, setCode] = useState(initialCode);
+	const [newCodeId, setNewCodeId] = useState(null);
+
+	const handleChange = (event) => {
+		event.persist();
+		setCode({
+			...code,
+			[event.target.name]: event.target.value,
+		});
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		fetch('http://localhost:4000/', {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+			body: JSON.stringify(code),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setNewCodeId(data._id);
+			})
+			.catch(console.error);
+	};
+
+	if (newCodeId) {
+		return <Redirect to={`/${newCodeId}`} />;
+	}
+
+	return (
+		<>
+			<h1>Create a new code snippet</h1>
+			<CodeForm
+				code={code}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+			/>
+		</>
+	);
+}
+
+export default CreateCode;
