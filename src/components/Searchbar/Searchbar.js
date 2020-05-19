@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Searchbar.css';
+
 function SearchBar(props) {
-	const [searchString, setSearchString] = useState('');
-	const { allCodesSnippet } = props;
-	console.log(allCodesSnippet);
+	const { searchString, setSearchString } = props;
+
 	const handleChange = (event) => {
 		event.persist();
 		setSearchString(event.target.value);
 	};
 
-	useEffect(() => {
-
-		//  allCodesSnippet.filter((code) => console.log(code) )
-		
-	}, [searchString]);
+	let history = useHistory();
 
 	const handleSubmit = (event) => {
+		console.log(history);
 		event.preventDefault();
+		console.log(searchString);
+		history.push('/');
 	};
 
 	return (
@@ -25,7 +25,7 @@ function SearchBar(props) {
 				type='text'
 				name='searchString'
 				required
-				placeholder='Search for Images'
+				placeholder='Search'
 				onChange={handleChange}
 				value={searchString}
 			/>
