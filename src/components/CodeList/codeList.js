@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './codeList.css';
 
-function CodeList() {
+function CodeList(props) {
 	const [codes, setCode] = useState([]);
+	const [filterCodes, setFilterCodes] = useState(null);
 	const [error, setError] = useState(false);
+	const { searchString, setSearchString } = props;
 
 	useEffect(() => {
 		fetch(`http://localhost:4000/`)

@@ -31,7 +31,7 @@ function App() {
 			{/* <CssBaseline /> */}
 			<Route
 				path='*'
-				render={(props) => {
+				render={() => {
 					return (
 						<Navbar
 							searchString={searchString}
@@ -41,25 +41,35 @@ function App() {
 				}}
 			/>
 			<Switch>
-				<Route exact path='/' component={Home} />
-				<Route path='/create' component={CodeCreate} />
 				<Route
 					exact
-					path='/code/:id'
-					render={(routerProps) => {
-						console.log(routerProps.match.params.id);
+					path='/'
+					render={() => {
 						return (
-							<CodeInfo
-								codeId={routerProps.match.params.id}
+							<Home
 								searchString={searchString}
 								setSearchString={setSearchString}
 							/>
 						);
 					}}
 				/>
-				<Route exact path='/code/:id/edit' component={CodeEdit} />
+				<Route path='/create' component={CodeCreate} />
+				<Route
+					exact
+					path='/code/:id'
+					render={(routerProps) => {
+						return <CodeInfo codeId={routerProps.match.params.id} />;
+					}}
+				/>
+				<Route
+					exact
+					path='/code/:id/edit'
+					render={(routerProps) => {
+						return <CodeEdit codeId={routerProps.match.params.id} />;
+					}}
+				/>
 				<Route exact path='/signup' component={Signup} />
-				<Route exact path='/sign' component={Sign} />
+				<Route exact path='/signin' component={Sign} />
 			</Switch>
 			{/* </ThemeProvider> */}
 		</>

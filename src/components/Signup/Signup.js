@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import './Signup.css';
 
@@ -35,6 +36,7 @@ class Signup extends Component {
 			userName: null,
 			email: null,
 			password: null,
+			createdUser: false,
 			//hold strings for errors that pop up
 			// this formErrors I am passing it along to form Valid function
 			formErrors: {
@@ -55,18 +57,28 @@ class Signup extends Component {
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',
 			},
-			body: JSON.stringify({email:this.state.email, password:this.state.password}),
+			body: JSON.stringify({
+				username: this.state.userName,
+				email: this.state.email,
+				password: this.state.password,
+			}),
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
+				this.setState({ createdUser: true });
 			})
 			.catch(console.error);
 	};
 
+	componentDidUpdate() {
+		if (this.state.createdUser) {
+			console.log(this.state.createdUser)
+		}
+	}
+
 	handleChange = (e) => {
 		e.preventDefault();
-		// destructing synthax for line 64
+		// destructing syntax for line 64
 		const { name, value } = e.target;
 		let formErrors = { ...this.state.formErrors };
 
@@ -90,13 +102,15 @@ class Signup extends Component {
 				break;
 		}
 		// state updating
-		this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+		this.setState({ formErrors, [name]: value });
 	};
 
 	render() {
 		const { formErrors } = this.state;
 
 		return (
+			<>
+			{this.state.createdUser && <Redirect to='/signin' />}
 			<div className='wrapper'>
 				<div className='form-wrapper'>
 					<h1>Create Account</h1>
@@ -149,6 +163,7 @@ class Signup extends Component {
 					</form>
 				</div>
 			</div>
+			</>
 		);
 	}
 }
