@@ -12,6 +12,7 @@ function CreateCode(props) {
 	const { authToken } = props;
 	const [code, setCode] = useState(initialCode);
 	const [newCodeId, setNewCodeId] = useState(null);
+	console.log(authToken.token);
 
 	const handleChange = (event) => {
 		event.persist();
