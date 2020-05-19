@@ -1,3 +1,22 @@
 .code-card-img {
 	width: 200px;
 }
+.code-card {
+	border: 2px solid;
+	text-align: center;
+	padding-bottom: 5px;
+	margin-bottom: 8px;
+	margin-right: 3px;
+}
+.box {
+	/* display: grid;
+	width: 100vw;
+	height: 100vh;
+	grid-template-columns: repeat(5, 20vmin);
+	grid-template-rows: repeat(5, 20vmin); */
+	display: grid;
+	grid-template-columns: repeat(4, 25%);
+	grid-column-gap: 10px;
+	grid-template-rows: 100px;
+	margin: 0;
+}

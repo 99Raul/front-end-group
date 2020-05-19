@@ -7,7 +7,7 @@ import CodeInfo from './components/CodeInfo/codeInfo';
 import CodeEdit from './components/CodeEdit/codeEdit';
 import { Route, Switch } from 'react-router-dom';
 import Signup from './components/Signup/Signup';
-import Sign from './components/Sign/Sign';
+import Login from './components/Login/Login';
 // import Switch from '@material-ui/core/Switch';
 
 // import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -69,7 +69,7 @@ function App() {
 					}}
 				/>
 				<Route exact path='/signup' component={Signup} />
-				<Route exact path='/signin' component={Sign} />
+				<Route exact path='/login' component={Login} />
 			</Switch>
 			{/* </ThemeProvider> */}
 		</>

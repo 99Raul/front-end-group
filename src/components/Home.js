@@ -8,7 +8,7 @@ function Home(props) {
 	return (
 		<>
 			<Link to='/create'>Create New Code</Link>
-			<Link to='/sign'>Sign In</Link>
+			<Link to='/login'>Login</Link>
 			<h1>Home Page</h1>
 			<CodeList searchString={searchString} setSearchString={setSearchString} />
 		</>

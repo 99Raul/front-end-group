@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import './Signup.css';
 
@@ -72,7 +72,7 @@ class Signup extends Component {
 
 	componentDidUpdate() {
 		if (this.state.createdUser) {
-			console.log(this.state.createdUser)
+			console.log(this.state.createdUser);
 		}
 	}
 
@@ -110,59 +110,59 @@ class Signup extends Component {
 
 		return (
 			<>
-			{this.state.createdUser && <Redirect to='/signin' />}
-			<div className='wrapper'>
-				<div className='form-wrapper'>
-					<h1>Create Account</h1>
-					<form onSubmit={this.handleSubmit}>
-						<div className='userName'>
-							<label htmlFor='userName'>User Name</label>
-							<input
-								className={formErrors.userName.length > 0 ? 'error' : null}
-								placeholder='User Name'
-								type='text'
-								name='userName'
-								noValidate
-								onChange={this.handleChange}
-							/>
-							{formErrors.userName.length > 0 && (
-								// if form userName length greater than 0 return this message
-								<span className='errorMessage'>{formErrors.userName}</span>
-							)}
-						</div>
-						<div className='email'>
-							<label htmlFor='email'>Email</label>
-							<input
-								className={formErrors.email.length > 0 ? 'error' : null}
-								placeholder='Email'
-								type='email'
-								name='email'
-								onChange={this.handleChange}
-							/>
-							{formErrors.email.length > 0 && (
-								<span className='errorMessage'>{formErrors.email}</span>
-							)}
-						</div>
-						<div className='password'>
-							<label htmlFor='password'>Password</label>
-							<input
-								className={formErrors.password.length > 0 ? 'error' : null}
-								placeholder='Password'
-								type='password'
-								name='password'
-								onChange={this.handleChange}
-							/>
-							{formErrors.password.length > 0 && (
-								<span className='errorMessage'>{formErrors.password}</span>
-							)}
-						</div>
-						<div className='createAccount'>
-							<button type='submit'>Create Account</button>
-							<small>Already Have an Account?</small>
-						</div>
-					</form>
+				{this.state.createdUser && <Redirect to='/login' />}
+				<div className='wrapper'>
+					<div className='form-wrapper'>
+						<h1>Create Account</h1>
+						<form onSubmit={this.handleSubmit}>
+							<div className='userName'>
+								<label htmlFor='userName'>User Name</label>
+								<input
+									className={formErrors.userName.length > 0 ? 'error' : null}
+									placeholder='User Name'
+									type='text'
+									name='userName'
+									noValidate
+									onChange={this.handleChange}
+								/>
+								{formErrors.userName.length > 0 && (
+									// if form userName length greater than 0 return this message
+									<span className='errorMessage'>{formErrors.userName}</span>
+								)}
+							</div>
+							<div className='email'>
+								<label htmlFor='email'>Email</label>
+								<input
+									className={formErrors.email.length > 0 ? 'error' : null}
+									placeholder='Email'
+									type='email'
+									name='email'
+									onChange={this.handleChange}
+								/>
+								{formErrors.email.length > 0 && (
+									<span className='errorMessage'>{formErrors.email}</span>
+								)}
+							</div>
+							<div className='password'>
+								<label htmlFor='password'>Password</label>
+								<input
+									className={formErrors.password.length > 0 ? 'error' : null}
+									placeholder='Password'
+									type='password'
+									name='password'
+									onChange={this.handleChange}
+								/>
+								{formErrors.password.length > 0 && (
+									<span className='errorMessage'>{formErrors.password}</span>
+								)}
+							</div>
+							<div className='createAccount'>
+								<button type='submit'>Create Account</button>
+								<Link to='/login'>Already Have an Account?</Link>
+							</div>
+						</form>
+					</div>
 				</div>
-			</div>
 			</>
 		);
 	}
