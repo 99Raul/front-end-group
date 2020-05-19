@@ -90,7 +90,10 @@ function Navbar(props) {
 						<IconButton onClick={toggleSlider('left', true)}>
 							<Menu style={{ color: '#FFFFFF' }} />
 						</IconButton>
-						<Searchbar allCodesSnippet={props.allCodesSnippet} />
+						<Searchbar
+							searchString={props.searchString}
+							setSearchString={props.setSearchString}
+						/>
 						<Typography variant='h5' style={{ color: '#FFFFFF' }}></Typography>
 						<MobileLeftMenuSlider
 							anchor='left'

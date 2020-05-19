@@ -22,7 +22,7 @@ function App() {
 	// 	},
 	// });
 
-	const [allCodesSnippet, setAllCodeSnippet] = useState(null);
+	const [searchString, setSearchString] = useState('');
 
 	return (
 		<>
@@ -34,8 +34,8 @@ function App() {
 				render={(props) => {
 					return (
 						<Navbar
-							allCodesSnippet={allCodesSnippet}
-							setAllCodeSnippet={setAllCodeSnippet}
+							searchString={searchString}
+							setSearchString={setSearchString}
 						/>
 					);
 				}}
@@ -46,11 +46,13 @@ function App() {
 				<Route
 					exact
 					path='/code/:id'
-					render={(props) => {
+					render={(routerProps) => {
+						console.log(routerProps.match.params.id);
 						return (
 							<CodeInfo
-								allCodesSnippet={allCodesSnippet}
-								setAllCodeSnippet={setAllCodeSnippet}
+								codeId={routerProps.match.params.id}
+								searchString={searchString}
+								setSearchString={setSearchString}
 							/>
 						);
 					}}

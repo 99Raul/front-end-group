@@ -26,7 +26,7 @@ function CodeList() {
 		<div>
 			{codes.map((code) => (
 				<div className='code-card' key={code._id}>
-					<Link to={`/${code._id}`}>
+					<Link to={`/code/${code._id}`}>
 						<h2>{code.title}</h2>
 						<img className='code-card-img' src={code.img} alt={code.title} />
 					</Link>

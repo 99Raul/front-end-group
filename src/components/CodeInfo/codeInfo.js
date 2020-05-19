@@ -8,19 +8,18 @@ function CodeInfo(props) {
 	const [returnCode, setReturn] = useState(false);
 
 	useEffect(() => {
-		fetch(`http://localhost:4000/${props.match.params.id}`)
+		fetch(`http://localhost:4000/show/${props.codeId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
 				setCode(data);
 				setReturn(true);
-				props.setAllCodeSnippets(data)
 			});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const deleteCode = (event) => {
-		fetch(`http://localhost:4000/${props.match.params.id}`, {
+		fetch(`http://localhost:4000/${props.codeId}`, {
 			method: 'DELETE',
 		}).then(() => {
 			setDeleted(true);
