@@ -5,6 +5,7 @@ import './codeInfo.css';
 function CodeInfo(props) {
 	const [code, setCode] = useState(null);
 	const [deleted, setDeleted] = useState(false);
+	const [returnCode, setReturn] = useState(false);
 
 	useEffect(() => {
 		fetch(`http://localhost:4000/${props.match.params.id}`)
@@ -12,6 +13,8 @@ function CodeInfo(props) {
 			.then((data) => {
 				console.log(data);
 				setCode(data);
+				setReturn(true);
+				props.setAllCodeSnippets(data)
 			});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -28,7 +31,7 @@ function CodeInfo(props) {
 		return <Redirect to='/' />;
 	}
 
-	if (!code) {
+	if (!returnCode) {
 		return <div>Loading...</div>;
 	}
 

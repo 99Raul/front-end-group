@@ -18,7 +18,7 @@ import {
 	Box,
 } from '@material-ui/core';
 
-import { Menu, Home, Bookmark, People } from '@material-ui/icons';
+import { Menu, Home, People, AssignmentInd } from '@material-ui/icons';
 
 // CSS STYLES
 const useStyles = makeStyles((theme) => ({
@@ -39,9 +39,9 @@ const menuItems = [
 		listPath: '/',
 	},
 	{
-		listIcon: <Bookmark />,
-		listText: 'Bookmarks',
-		listPath: 'bookmark',
+		listIcon: <AssignmentInd />,
+		listText: 'Sign Up',
+		listPath: 'signup',
 	},
 	{
 		listIcon: <People />,
@@ -50,7 +50,7 @@ const menuItems = [
 	},
 ];
 
-function Navbar() {
+function Navbar(props) {
 	const [state, setState] = useState({
 		left: false,
 	});
@@ -90,10 +90,8 @@ function Navbar() {
 						<IconButton onClick={toggleSlider('left', true)}>
 							<Menu style={{ color: '#FFFFFF' }} />
 						</IconButton>
-						<Searchbar />
-						<Typography variant='h5' style={{ color: '#FFFFFF' }}>
-						
-						</Typography>
+						<Searchbar allCodesSnippet={props.allCodesSnippet} />
+						<Typography variant='h5' style={{ color: '#FFFFFF' }}></Typography>
 						<MobileLeftMenuSlider
 							anchor='left'
 							open={state.left}

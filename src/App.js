@@ -6,6 +6,8 @@ import Navbar from './components/Navbar/Navbar';
 import CodeInfo from './components/CodeInfo/codeInfo';
 import CodeEdit from './components/CodeEdit/codeEdit';
 import { Route, Switch } from 'react-router-dom';
+import Signup from './components/Signup/Signup';
+import Sign from './components/Sign/Sign';
 // import Switch from '@material-ui/core/Switch';
 
 // import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -20,17 +22,42 @@ function App() {
 	// 	},
 	// });
 
+	const [allCodesSnippet, setAllCodeSnippet] = useState(null);
+
 	return (
 		<>
 			{/* <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} /> */}
 			{/* <ThemeProvider theme={theme}> */}
 			{/* <CssBaseline /> */}
-			<Route path='*' component={Navbar} />
+			<Route
+				path='*'
+				render={(props) => {
+					return (
+						<Navbar
+							allCodesSnippet={allCodesSnippet}
+							setAllCodeSnippet={setAllCodeSnippet}
+						/>
+					);
+				}}
+			/>
 			<Switch>
 				<Route exact path='/' component={Home} />
 				<Route path='/create' component={CodeCreate} />
-				<Route exact path='/:id' component={CodeInfo} />
-				<Route exact path='/:id/edit' component={CodeEdit} />
+				<Route
+					exact
+					path='/code/:id'
+					render={(props) => {
+						return (
+							<CodeInfo
+								allCodesSnippet={allCodesSnippet}
+								setAllCodeSnippet={setAllCodeSnippet}
+							/>
+						);
+					}}
+				/>
+				<Route exact path='/code/:id/edit' component={CodeEdit} />
+				<Route exact path='/signup' component={Signup} />
+				<Route exact path='/sign' component={Sign} />
 			</Switch>
 			{/* </ThemeProvider> */}
 		</>
