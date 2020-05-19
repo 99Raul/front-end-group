@@ -23,6 +23,7 @@ function App() {
 	// });
 
 	const [searchString, setSearchString] = useState('');
+	const [authToken, setAuthToken] = useState(null);
 
 	return (
 		<>
@@ -65,11 +66,22 @@ function App() {
 					exact
 					path='/code/:id/edit'
 					render={(routerProps) => {
-						return <CodeEdit codeId={routerProps.match.params.id} />;
+						return <CodeEdit codeId={routerProps.match.params.id} authToken={authToken} />;
 					}}
 				/>
 				<Route exact path='/signup' component={Signup} />
-				<Route exact path='/login' component={Login} />
+				<Route
+					exact
+					path='/login'
+					render={() => {
+						return (
+							<Login
+								authToken={authToken}
+								setAuthToken={setAuthToken}
+							/>
+						);
+					}}
+				/>
 			</Switch>
 			{/* </ThemeProvider> */}
 		</>

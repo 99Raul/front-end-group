@@ -67,6 +67,7 @@ function Navbar(props) {
 			onClick={toggleSlider(slider, false)}>
 			<Divider />
 
+
 			<List>
 				{menuItems.map((isItem, key) => (
 					<ListItem button key={key} component={Link} to={isItem.listPath}>

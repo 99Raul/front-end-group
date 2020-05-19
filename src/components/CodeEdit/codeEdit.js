@@ -3,7 +3,7 @@ import CodeForm from '../CodeForm/codeForm';
 import { Redirect } from 'react-router-dom';
 
 function CodeEdit(props) {
-	const {codeId} = props;
+	const {codeId, authToken} = props;
 	const [code, setCode] = useState(null);
 	const [newCode, setNewCode] = useState(null);
 
@@ -32,7 +32,7 @@ function CodeEdit(props) {
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',
 				Authorization:
-					'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzNlZjgzMmY0MTY2MzJiN2YwMmZjZCIsImlhdCI6MTU4OTkwOTA5NSwiZXhwIjoxNTg5OTQ1MDk1fQ.LH9lOLqdg_HgggBsPvDGGzKfzH5mzBn62ukaetNPyM8',
+					`Bearer ${authToken.token}`,
 			},
 			body: JSON.stringify(code),
 		})

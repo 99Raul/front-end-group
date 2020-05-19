@@ -25,7 +25,7 @@ function CodeList(props) {
 	}
 
 	return (
-		<div>
+		<div className='box'>
 			{codes.map((code) => (
 				<div className='code-card' key={code._id}>
 					<Link to={`/code/${code._id}`}>
