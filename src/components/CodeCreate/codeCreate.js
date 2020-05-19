@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import CodeForm from '../CodeForm/codeForm';
 import { Redirect } from 'react-router-dom';
 
-function CreateCode() {
+function CreateCode(props) {
 	const initialCode = {
 		title: '',
 		body: '',
 		description: '',
 		img: '',
 	};
+	const { authToken } = props;
 	const [code, setCode] = useState(initialCode);
 	const [newCodeId, setNewCodeId] = useState(null);
 
@@ -27,6 +28,7 @@ function CreateCode() {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',
+				Authorization: `Bearer ${authToken.token}`,
 			},
 			body: JSON.stringify(code),
 		})

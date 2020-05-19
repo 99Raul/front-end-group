@@ -54,19 +54,34 @@ function App() {
 						);
 					}}
 				/>
-				<Route path='/create' component={CodeCreate} />
+				<Route
+					path='/create'
+					render={() => {
+						return <CodeCreate authToken={authToken} />;
+					}}
+				/>
 				<Route
 					exact
 					path='/code/:id'
 					render={(routerProps) => {
-						return <CodeInfo codeId={routerProps.match.params.id} />;
+						return (
+							<CodeInfo
+								codeId={routerProps.match.params.id}
+								authToken={authToken}
+							/>
+						);
 					}}
 				/>
 				<Route
 					exact
 					path='/code/:id/edit'
 					render={(routerProps) => {
-						return <CodeEdit codeId={routerProps.match.params.id} authToken={authToken} />;
+						return (
+							<CodeEdit
+								codeId={routerProps.match.params.id}
+								authToken={authToken}
+							/>
+						);
 					}}
 				/>
 				<Route exact path='/signup' component={Signup} />
@@ -74,12 +89,7 @@ function App() {
 					exact
 					path='/login'
 					render={() => {
-						return (
-							<Login
-								authToken={authToken}
-								setAuthToken={setAuthToken}
-							/>
-						);
+						return <Login authToken={authToken} setAuthToken={setAuthToken} />;
 					}}
 				/>
 			</Switch>

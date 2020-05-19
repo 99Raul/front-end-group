@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import './codeInfo.css';
 
 function CodeInfo(props) {
+	const { authToken } = props
 	const [code, setCode] = useState(null);
 	const [deleted, setDeleted] = useState(false);
 	const [returnCode, setReturn] = useState(false);
@@ -21,6 +22,9 @@ function CodeInfo(props) {
 	const deleteCode = (event) => {
 		fetch(`http://localhost:4000/${props.codeId}`, {
 			method: 'DELETE',
+			header: {
+				Authorization: `Bearer ${authToken.token}`,
+			},
 		}).then(() => {
 			setDeleted(true);
 		});
