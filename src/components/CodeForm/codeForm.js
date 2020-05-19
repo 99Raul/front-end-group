@@ -1,6 +1,21 @@
 import React from 'react';
 
 function codeForm(props) {
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const formData = new FormData(event.target);
+		fetch('http://localhost:4000/users', {
+			method: 'POST',
+			body: formData,
+		})
+		.then((response) => response.json()).then((result) => {
+			console.log('Success: ', result)
+		})
+		.catch((error) => {
+			console.error('Error', error)
+		})
+	};
+
 	return (
 		<form onSubmit={props.handleSubmit}>
 			<label htmlFor='title'>Title</label>
@@ -34,7 +49,7 @@ function codeForm(props) {
 				id='description'
 			/>
 
-			<label htmlFor='image'>Image</label>
+			{/* <label htmlFor='image'>Image</label>
 			<input
 				type='text'
 				value={props.code.img}
@@ -42,7 +57,14 @@ function codeForm(props) {
 				placeholder='Code image'
 				name='img'
 				id='img'
-			/>
+			/> */}
+
+			<form encType='multipart/form-data' onSubmit={handleSubmit}>
+				<label htmlFor='username'>Username:</label>
+				<input id='username' name='username' type='text' />
+				<input type='file' id='avatar' name='avatar' />
+				<button type='submit'>Send it</button>
+			</form>
 
 			<button>Submit</button>
 		</form>
