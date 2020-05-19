@@ -40,7 +40,7 @@ function CreateCode(props) {
 	};
 
 	if (newCodeId) {
-		return <Redirect to={`/${newCodeId}`} />;
+		return <Redirect to={`/code/${newCodeId}`} />;
 	}
 
 	return (

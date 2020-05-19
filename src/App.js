@@ -21,6 +21,7 @@ function App() {
 	// 		type: darkMode ? 'dark' : 'light',
 	// 	},
 	// });
+	
 
 	const [searchString, setSearchString] = useState('');
 	const [authToken, setAuthToken] = useState(null);
@@ -50,6 +51,7 @@ function App() {
 							<Home
 								searchString={searchString}
 								setSearchString={setSearchString}
+								authToken={authToken}
 							/>
 						);
 					}}

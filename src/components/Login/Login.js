@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 function Login(props) {
 	const { authToken, setAuthToken } = props;
 	const initialUser = {
-		email: '',
+		username: '',
 		password: '',
 	};
 	const [user, setUser] = useState(initialUser);
@@ -46,13 +46,13 @@ function Login(props) {
 					<form onSubmit={handleSubmit}>
 						<h1> Please sign In</h1>
 						<div className='form-group'>
-							<label htmlFor='email'>Email</label>
+							<label htmlFor='username'>Username</label>
 							<input
-								type='email'
+								type='username'
 								className='form-control'
-								name='email'
-								placeholder='Enter Email'
-								value={user.email}
+								name='username'
+								placeholder='Username'
+								value={user.username}
 								onChange={handleChange}
 							/>
 						</div>

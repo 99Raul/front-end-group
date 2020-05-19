@@ -22,7 +22,7 @@ function CodeInfo(props) {
 	const deleteCode = (event) => {
 		fetch(`http://localhost:4000/${props.codeId}`, {
 			method: 'DELETE',
-			header: {
+			headers: {
 				Authorization: `Bearer ${authToken.token}`,
 			},
 		}).then(() => {
