@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
 import './Signup.css';
+//import styles from './Signup.module.css'
 
 // RegExp is a regular expression for testing the most basic email,address structure
 // string searching algorithim from codespot.org

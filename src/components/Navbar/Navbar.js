@@ -38,11 +38,11 @@ const menuItems = [
 		listText: 'Home',
 		listPath: '/',
 	},
-	{
-		listIcon: <AssignmentInd />,
-		listText: 'Sign Up',
-		listPath: 'signup',
-	},
+	// {
+	// 	listIcon: <AssignmentInd />,
+	// 	listText: 'Sign Up',
+	// 	listPath: 'signup',
+	// },
 	{
 		listIcon: <People />,
 		listText: 'Users Followed',
