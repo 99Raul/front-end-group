@@ -4,4 +4,10 @@
 .code-info-snip {
 	display: flex;
 	flex-direction: column;
+	width: 80vw;
+	margin: 0 auto;
+}
+
+.button {
+	
 }

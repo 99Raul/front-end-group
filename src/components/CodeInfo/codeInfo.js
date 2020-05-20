@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { APIURL } from '../../config';
 import './codeInfo.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 function CodeInfo(props) {
 	const { authToken } = props;
@@ -45,14 +45,14 @@ function CodeInfo(props) {
 		<div className='code-info-snip'>
 			<h1>Code Snippet</h1>
 			<h2>{code.title}</h2>
-			<SyntaxHighlighter language='javascript' style={dark}>
+			<SyntaxHighlighter language='javascript' style={okaidia}>
 				{code.body}
 			</SyntaxHighlighter>
 			<p>{code.description}</p>
 			<img className='code-info-image' src={code.img} alt={code.description} />
 			<div>
-				<Link to={`${code._id}/edit`}>Edit</Link>
-				<button onClick={deleteCode}>Delete</button>
+				<Link to={`${code._id}/edit`} className='button'>Edit</Link>
+				<button className='button' onClick={deleteCode}>Delete</button>
 			</div>
 		</div>
 	);
