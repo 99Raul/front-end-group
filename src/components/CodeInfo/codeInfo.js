@@ -10,7 +10,7 @@ function CodeInfo(props) {
 	const [returnCode, setReturn] = useState(false);
 
 	useEffect(() => {
-		fetch(`${APIURL}/show/${props.codeId}`)
+		fetch(`${APIURL}show/${props.codeId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
@@ -21,7 +21,7 @@ function CodeInfo(props) {
 	}, []);
 
 	const deleteCode = (event) => {
-		fetch(`${APIURL}/${props.codeId}`, {
+		fetch(`${APIURL}${props.codeId}`, {
 			method: 'DELETE',
 			headers: {
 				Authorization: `Bearer ${authToken.token}`,

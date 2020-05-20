@@ -24,7 +24,6 @@ function CreateCode(props) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
 		fetch(APIURL, {
 			method: 'POST',
 			headers: {

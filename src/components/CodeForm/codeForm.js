@@ -2,7 +2,7 @@ import React from 'react';
 
 function codeForm(props) {
 	return (
-		<form onSubmit={props.handleSubmit}>
+		<form encType='multipart/form-data' onSubmit={props.handleSubmit}>
 			<label htmlFor='title'>Title</label>
 			<input
 				type='text'
@@ -36,7 +36,7 @@ function codeForm(props) {
 
 			<label htmlFor='image'>Image</label>
 			<input
-				type='text'
+				type='file'
 				value={props.code.img}
 				onChange={props.handleChange}
 				placeholder='Code image'
@@ -44,7 +44,7 @@ function codeForm(props) {
 				id='img'
 			/>
 
-			<button>Submit</button>
+			<button type='submit'>Submit</button>
 		</form>
 	);
 }

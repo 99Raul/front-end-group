@@ -22,7 +22,7 @@ function Login(props) {
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		fetch(`${APIURL}/users/signin`, {
+		fetch(`${APIURL}users/signin`, {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',

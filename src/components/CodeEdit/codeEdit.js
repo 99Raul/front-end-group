@@ -9,7 +9,7 @@ function CodeEdit(props) {
 	const [newCode, setNewCode] = useState(null);
 
 	useEffect(() => {
-		fetch(`${APIURL}/show/${codeId}`)
+		fetch(`${APIURL}show/${codeId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				setCode(data);
@@ -28,7 +28,7 @@ function CodeEdit(props) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		fetch(`${APIURL}/${codeId}`, {
+		fetch(`${APIURL}${codeId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',

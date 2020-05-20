@@ -54,7 +54,7 @@ class Signup extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 
-		fetch(`${APIURL}/users/signup`, {
+		fetch(`${APIURL}users/signup`, {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',

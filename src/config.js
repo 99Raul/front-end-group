@@ -1,1 +1,1 @@
-export const APIURL = 'http://codesharebackend.herokuapp.com/';
+export const APIURL = 'https://codesharebackend.herokuapp.com/';
