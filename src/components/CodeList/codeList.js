@@ -27,12 +27,12 @@ function CodeList(props) {
 	return (
 		<div className='box'>
 			{codes.map((code) => (
-				<div className='code-card' key={code._id}>
-					<Link to={`/code/${code._id}`}>
+				<Link to={`/code/${code._id}`} key={code._id}>
+					<div className='code-card'>
 						<h2>{code.title}</h2>
 						<img className='code-card-img' src={code.img} alt={code.title} />
-					</Link>
-				</div>
+					</div>
+				</Link>
 			))}
 		</div>
 	);

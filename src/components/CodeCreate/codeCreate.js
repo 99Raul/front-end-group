@@ -24,14 +24,14 @@ function CreateCode(props) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const formData = new FormData(event.target);
+		// const formData = new FormData(event.target)
 		fetch(APIURL, {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',
 				Authorization: `Bearer ${authToken.token}`,
 			},
-			body: formData,
+			body: JSON.stringify(code),
 		})
 			.then((response) => response.json())
 			.then((data) => {
