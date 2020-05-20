@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { APIURL } from '../../config';
 import './codeList.css';
 
 function CodeList(props) {
@@ -9,10 +10,9 @@ function CodeList(props) {
 	const { searchString, setSearchString } = props;
 
 	useEffect(() => {
-		fetch(`http://localhost:4000/`)
+		fetch(APIURL)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				setCode(data);
 			})
 			.catch(() => {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import { APIURL } from '../../config';
 import './codeInfo.css';
 
 function CodeInfo(props) {
@@ -9,7 +10,7 @@ function CodeInfo(props) {
 	const [returnCode, setReturn] = useState(false);
 
 	useEffect(() => {
-		fetch(`http://localhost:4000/show/${props.codeId}`)
+		fetch(`${APIURL}/show/${props.codeId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
@@ -20,7 +21,7 @@ function CodeInfo(props) {
 	}, []);
 
 	const deleteCode = (event) => {
-		fetch(`http://localhost:4000/${props.codeId}`, {
+		fetch(`${APIURL}/${props.codeId}`, {
 			method: 'DELETE',
 			headers: {
 				Authorization: `Bearer ${authToken.token}`,

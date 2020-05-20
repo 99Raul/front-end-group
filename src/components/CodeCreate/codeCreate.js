@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CodeForm from '../CodeForm/codeForm';
 import { Redirect } from 'react-router-dom';
+import { APIURL } from '../../config';
 
 function CreateCode(props) {
 	const initialCode = {
@@ -12,7 +13,6 @@ function CreateCode(props) {
 	const { authToken } = props;
 	const [code, setCode] = useState(initialCode);
 	const [newCodeId, setNewCodeId] = useState(null);
-	console.log(authToken.token);
 
 	const handleChange = (event) => {
 		event.persist();
@@ -25,7 +25,7 @@ function CreateCode(props) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		fetch('http://localhost:4000/', {
+		fetch(APIURL, {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',

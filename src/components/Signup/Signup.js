@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import { APIURL } from '../../config';
 
 import './Signup.css';
 //import styles from './Signup.module.css'
@@ -53,7 +54,7 @@ class Signup extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 
-		fetch('http://localhost:4000/users/signup', {
+		fetch(`${APIURL}/users/signup`, {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',

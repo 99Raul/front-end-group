@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import CodeForm from '../CodeForm/codeForm';
 import { Redirect } from 'react-router-dom';
+import { APIURL } from '../../config';
 
 function CodeEdit(props) {
-	const {codeId, authToken} = props;
+	const { codeId, authToken } = props;
 	const [code, setCode] = useState(null);
 	const [newCode, setNewCode] = useState(null);
 
 	useEffect(() => {
-		fetch(`http://localhost:4000/show/${codeId}`)
+		fetch(`${APIURL}/show/${codeId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				setCode(data);
@@ -27,18 +28,17 @@ function CodeEdit(props) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		fetch(`http://localhost:4000/${codeId}`, {
+		fetch(`${APIURL}/${codeId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',
-				Authorization:
-					`Bearer ${authToken.token}`,
+				Authorization: `Bearer ${authToken.token}`,
 			},
 			body: JSON.stringify(code),
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				setNewCode(data._id)
+				setNewCode(data._id);
 			})
 			.catch(console.error);
 	};

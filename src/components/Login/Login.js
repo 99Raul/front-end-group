@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import './Login.css'
+import { APIURL } from '../../config';
+import './Login.css';
 // import styles from './Login.module.css'
-
 
 function Login(props) {
 	const { authToken, setAuthToken } = props;
@@ -22,7 +22,7 @@ function Login(props) {
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		fetch('http://localhost:4000/users/signin', {
+		fetch(`${APIURL}/users/signin`, {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',
