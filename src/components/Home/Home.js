@@ -11,13 +11,13 @@ function Home(props) {
 		<>
 			<div className='link-container'>
 
-			{authToken === null && <div className='link1'>
+			{authToken === null && <div className='link'>
 				<Link to='/signup'>Sign Up</Link>
 			</div>}
-			<div className='link2'>
+			{authToken !== null && <div className='link'>
 				<Link to='/create'>Create New Code</Link>
-			</div>
-			{authToken === null && <div className='link3'>
+			</div>}
+			{authToken === null && <div className='link'>
 				<Link to='/login'>Login</Link>
 			</div>}
 			</div>
