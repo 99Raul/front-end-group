@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { APIURL } from '../../config';
 import './codeInfo.css';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 function CodeInfo(props) {
-	const { authToken } = props
+	const { authToken } = props;
 	const [code, setCode] = useState(null);
 	const [deleted, setDeleted] = useState(false);
 	const [returnCode, setReturn] = useState(false);
@@ -43,7 +45,9 @@ function CodeInfo(props) {
 		<div className='code-info-snip'>
 			<h1>Code Snippet</h1>
 			<h2>{code.title}</h2>
-			<p>{code.body}</p>
+			<SyntaxHighlighter language='javascript' style={dark}>
+				{code.body}
+			</SyntaxHighlighter>
 			<p>{code.description}</p>
 			<img className='code-info-image' src={code.img} alt={code.description} />
 			<div>
