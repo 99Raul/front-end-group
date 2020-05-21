@@ -57,6 +57,7 @@ function CodeEdit(props) {
 			.then((response) => response.json())
 			.then((data) => {
 				setNewCode(data._id);
+				console.log(data)
 			})
 			.catch(console.error);
 	};
