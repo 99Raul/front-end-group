@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 
 ReactDOM.render(
-	<Router>
+	<Router basename='/front-end-group'>
 		<App />
 	</Router>,
 	document.getElementById('root')

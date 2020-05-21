@@ -1,7 +1,7 @@
 {
 	"name": "snippet-app",
 	"version": "0.1.0",
-	"homepage": "http://99Raul.github.io/front-end-group",
+	"homepage": "https://99raul.github.io/front-end-group/",
 	"dependencies": {
 		"@material-ui/core": "^4.9.14",
 		"@material-ui/icons": "^4.9.1",
