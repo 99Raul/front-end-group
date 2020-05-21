@@ -29,9 +29,6 @@ function SearchBar(props) {
 				onChange={handleChange}
 				value={searchString}
 			/>
-			<button type='submit' className='submit'>
-				Submit
-			</button>
 		</form>
 	);
 }

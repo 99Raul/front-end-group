@@ -5,9 +5,8 @@ import './codeList.css';
 
 function CodeList(props) {
 	const [codes, setCode] = useState([]);
-	const [filterCodes, setFilterCodes] = useState(null);
 	const [error, setError] = useState(false);
-	const { searchString, setSearchString } = props;
+	const { searchString } = props;
 
 	useEffect(() => {
 		fetch(APIURL)
@@ -20,13 +19,17 @@ function CodeList(props) {
 			});
 	}, []);
 
+	let filteredCodes = codes.filter((code) => {
+		return code.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1;
+	});
+
 	if (error) {
 		return <div>There was an error retrieving the code</div>;
 	}
 
 	return (
 		<div className='box'>
-			{codes.map((code) => (
+			{filteredCodes.map((code) => (
 				<Link to={`/code/${code._id}`} key={code._id}>
 					<div className='code-card'>
 						<h2>{code.title}</h2>

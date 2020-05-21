@@ -33,3 +33,12 @@ a:active {
 	display: flex;
 	justify-content: space-around;
 }
+
+.modal {
+	background: rgba(255, 255, 255, 0);
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	margin: 0 auto;
+}

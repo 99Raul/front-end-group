@@ -33,7 +33,7 @@ const formValid = ({ formErrors, ...rest }) => {
 class Signup extends Component {
 	constructor(props) {
 		super(props);
-
+		console.log(props);
 		this.state = {
 			userName: null,
 			email: null,
@@ -48,6 +48,7 @@ class Signup extends Component {
 			},
 		};
 	}
+	
 
 	// event propogation
 	// line 54 work on later to create popUp
@@ -115,6 +116,7 @@ class Signup extends Component {
 				{this.state.createdUser && <Redirect to='/login' />}
 				<div className='wrapper'>
 					<div className='form-wrapper'>
+					<button className='close' onClick={this.props.handleSignUp}>X</button>
 						<h1>Create Account</h1>
 						<form onSubmit={this.handleSubmit}>
 							<div className='userName'>

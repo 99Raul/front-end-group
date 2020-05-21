@@ -5,7 +5,6 @@ import Navbar from './components/Navbar/Navbar';
 import CodeInfo from './components/CodeInfo/codeInfo';
 import CodeEdit from './components/CodeEdit/codeEdit';
 import { Route, Switch } from 'react-router-dom';
-import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
 
 function App() {
@@ -69,7 +68,6 @@ function App() {
 						);
 					}}
 				/>
-				<Route exact path='/signup' component={Signup} />
 				<Route
 					exact
 					path='/login'
