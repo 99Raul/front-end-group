@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { APIURL } from '../../config';
 import './codeInfo.css';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { CodeBlock, dracula } from 'react-code-blocks';
 
 function CodeInfo(props) {
 	const { authToken } = props;
@@ -45,14 +44,21 @@ function CodeInfo(props) {
 		<div className='code-info-snip'>
 			<h1>Code Snippet</h1>
 			<h2>{code.title}</h2>
-			<SyntaxHighlighter language='javascript' style={okaidia}>
-				{code.body}
-			</SyntaxHighlighter>
+			<CodeBlock
+				text={code.body}
+				language='javascript'
+				theme={dracula}
+				wrapLines
+			/>
 			<p>{code.description}</p>
 			<img className='code-info-image' src={code.img} alt={code.description} />
 			<div>
-				<Link to={`${code._id}/edit`} className='button'>Edit</Link>
-				<button className='button' onClick={deleteCode}>Delete</button>
+				<Link to={`${code._id}/edit`} className='button'>
+					Edit
+				</Link>
+				<button className='button' onClick={deleteCode}>
+					Delete
+				</button>
 			</div>
 		</div>
 	);

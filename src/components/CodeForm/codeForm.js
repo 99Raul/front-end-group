@@ -15,8 +15,8 @@ function codeForm(props) {
 			/>
 
 			<label htmlFor='body'>Code</label>
-			<input
-				type='text'
+			<textarea
+				rows='25'
 				value={props.code.body}
 				onChange={props.handleChange}
 				placeholder='Code'

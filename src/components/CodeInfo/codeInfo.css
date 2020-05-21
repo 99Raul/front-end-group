@@ -9,5 +9,8 @@
 }
 
 .button {
+	font-size: 16px;
+	border: solid red;
+	padding: 10px 15px;
 	
 }
