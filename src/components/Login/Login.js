@@ -12,6 +12,7 @@ function Login(props) {
 	};
 	const [user, setUser] = useState(initialUser);
 	const [login, setLogin] = useState(false);
+	const [failLogin, setFailLogin] = useState(false);
 
 	const handleChange = (event) => {
 		event.persist();
@@ -35,7 +36,9 @@ function Login(props) {
 				setAuthToken(data);
 				setLogin(true);
 			})
-			.catch(console.error);
+			.catch(() => {
+				setFailLogin(true);
+			});
 	};
 
 	if (login) {
@@ -76,6 +79,7 @@ function Login(props) {
 					Sign In
 				</button>
 			</div>
+			{failLogin && <p className='fail-login'>Login Failed Try Again!</p>}
 		</form>
 	);
 }

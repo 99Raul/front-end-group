@@ -1,12 +1,17 @@
 .code-card-img {
-	width: 200px;
+	width: 300px;
+	max-height: 200px;
 }
 .code-card {
 	background: rgb(233, 233, 233);
 	border-radius: 10px;
-	height: 250px;
+	height: 400px;
 	padding: 10px;
 	box-shadow: 5px 5px 20px gray;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .box {
 	width: 90vw;
