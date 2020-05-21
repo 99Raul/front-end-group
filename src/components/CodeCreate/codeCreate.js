@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import CodeForm from '../CodeForm/codeForm';
 import { Redirect } from 'react-router-dom';
+import { APIURL } from '../../config';
 
-function CreateCode() {
+function CreateCode(props) {
 	const initialCode = {
 		title: '',
 		body: '',
 		description: '',
 		img: '',
 	};
+	const { authToken } = props;
 	const [code, setCode] = useState(initialCode);
 	const [newCodeId, setNewCodeId] = useState(null);
 
@@ -22,13 +24,13 @@ function CreateCode() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
-		fetch('http://localhost:4000/', {
+		const formData = new FormData(event.target)
+		fetch(APIURL, {
 			method: 'POST',
 			headers: {
-				'Content-type': 'application/json; charset=UTF-8',
+				Authorization: `Bearer ${authToken.token}`,
 			},
-			body: JSON.stringify(code),
+			body: formData,
 		})
 			.then((response) => response.json())
 			.then((data) => {
@@ -38,7 +40,7 @@ function CreateCode() {
 	};
 
 	if (newCodeId) {
-		return <Redirect to={`/${newCodeId}`} />;
+		return <Redirect to={`/code/${newCodeId}`} />;
 	}
 
 	return (

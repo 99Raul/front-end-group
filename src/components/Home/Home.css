@@ -1,0 +1,35 @@
+a {
+	padding: 15px;
+	text-align: center;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active {
+	color: black;
+}
+
+.link:hover {
+	background: rgb(196, 196, 196);
+}
+
+.link {
+	text-align: center;
+	text-decoration: none;
+	padding: 5px;
+	border-radius: 4px;
+	margin-right: 4px;
+	background-color: #ffffff;
+	border-color: #dddddd;
+}
+
+
+.link-container {
+	margin: 0 auto;
+	padding: 10px;
+	width: 40vw;
+	display: flex;
+	justify-content: space-around;
+}

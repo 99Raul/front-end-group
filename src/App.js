@@ -1,39 +1,84 @@
 import React, { useState } from 'react';
-// import CssBaseline from '@material-ui/core/CssBaseline';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import CodeCreate from './components/CodeCreate/codeCreate';
 import Navbar from './components/Navbar/Navbar';
 import CodeInfo from './components/CodeInfo/codeInfo';
 import CodeEdit from './components/CodeEdit/codeEdit';
 import { Route, Switch } from 'react-router-dom';
-// import Switch from '@material-ui/core/Switch';
+import Signup from './components/Signup/Signup';
+import Login from './components/Login/Login';
 
-// import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
-// Theme Provider has to always be on top or wrapped tags
 function App() {
-	// const [darkMode, setDarkMode] = useState(false);
-
-	// const theme = createMuiTheme({
-	// 	palette: {
-	// 		type: darkMode ? 'dark' : 'light',
-	// 	},
-	// });
+	const [searchString, setSearchString] = useState('');
+	const [authToken, setAuthToken] = useState(null);
 
 	return (
-		<>
-			{/* <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} /> */}
-			{/* <ThemeProvider theme={theme}> */}
-			{/* <CssBaseline /> */}
-			<Route path='*' component={Navbar} />
+		<div className = "main">
+			<Route
+				path='*'
+				render={() => {
+					return (
+						<Navbar
+							searchString={searchString}
+							setSearchString={setSearchString}
+						/>
+					);
+				}}
+			/>
 			<Switch>
-				<Route exact path='/' component={Home} />
-				<Route path='/create' component={CodeCreate} />
-				<Route exact path='/show/:id' component={CodeInfo} />
-				<Route exact path='/:id/edit' component={CodeEdit} />
+				<Route
+					exact
+					path='/'
+					render={() => {
+						return (
+							<Home
+								searchString={searchString}
+								setSearchString={setSearchString}
+								authToken={authToken}
+							/>
+						);
+					}}
+				/>
+				<Route
+					path='/create'
+					render={() => {
+						return <CodeCreate authToken={authToken} />;
+					}}
+				/>
+				<Route
+					exact
+					path='/code/:id'
+					render={(routerProps) => {
+						return (
+							<CodeInfo
+								codeId={routerProps.match.params.id}
+								authToken={authToken}
+							/>
+						);
+					}}
+				/>
+				<Route
+					exact
+					path='/code/:id/edit'
+					render={(routerProps) => {
+						return (
+							<CodeEdit
+								codeId={routerProps.match.params.id}
+								authToken={authToken}
+							/>
+						);
+					}}
+				/>
+				<Route exact path='/signup' component={Signup} />
+				<Route
+					exact
+					path='/login'
+					render={() => {
+						return <Login authToken={authToken} setAuthToken={setAuthToken} />;
+					}}
+				/>
 			</Switch>
-			{/* </ThemeProvider> */}
-		</>
+		</div>
 	);
 }
 

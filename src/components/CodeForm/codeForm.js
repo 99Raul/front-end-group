@@ -1,10 +1,16 @@
 import React from 'react';
-
+import "./codeForm.css";
 function codeForm(props) {
 	return (
-		<form onSubmit={props.handleSubmit}>
-			<label htmlFor='title'>Title</label>
+		<form
+			className='code-form'
+			encType='multipart/form-data'
+			onSubmit={props.handleSubmit}>
+			<label className='label' htmlFor='title'>
+				Title
+			</label>
 			<input
+				className='title-input'
 				type='text'
 				placeholder='Code Title'
 				value={props.code.title}
@@ -14,9 +20,12 @@ function codeForm(props) {
 				name='title'
 			/>
 
-			<label htmlFor='body'>Code</label>
-			<input
-				type='text'
+			<label className='label' htmlFor='body'>
+				Code
+			</label>
+			<textarea
+				className='code-input'
+				rows='25'
 				value={props.code.body}
 				onChange={props.handleChange}
 				placeholder='Code'
@@ -24,9 +33,11 @@ function codeForm(props) {
 				id='body'
 			/>
 
-			<label htmlFor='description'>Description</label>
-			<input
-				type='text'
+			<label className='label' htmlFor='description'>
+				Description
+			</label>
+			<textarea
+				className='description-input'
 				value={props.code.description}
 				onChange={props.handleChange}
 				placeholder='Code Description'
@@ -34,17 +45,21 @@ function codeForm(props) {
 				id='description'
 			/>
 
-			<label htmlFor='image'>Image</label>
+			<label className='label' htmlFor='image'>
+				Image
+			</label>
 			<input
-				type='text'
-				value={props.code.img}
+				className='image-input'
+				type='file'
 				onChange={props.handleChange}
 				placeholder='Code image'
 				name='img'
 				id='img'
 			/>
 
-			<button>Submit</button>
+			<button className='submit-button' type='submit'>
+				Submit
+			</button>
 		</form>
 	);
 }

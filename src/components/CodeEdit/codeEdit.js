@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import CodeForm from '../CodeForm/codeForm';
 import { Redirect } from 'react-router-dom';
+import { APIURL } from '../../config';
 
 function CodeEdit(props) {
+	const { codeId, authToken } = props;
 	const [code, setCode] = useState(null);
-	const [codeId, setCodeId] = useState(null);
+	const [newCode, setNewCode] = useState(null);
 
 	useEffect(() => {
-		fetch(`http://localhost:4000/${props.match.params.id}`)
+		fetch(`${APIURL}show/${codeId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				console.log(data);
 				setCode(data);
 			});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,22 +29,41 @@ function CodeEdit(props) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		fetch(`http://localhost:4000/${props.match.params.id}`, {
+		// const formData = new FormData(event.target);
+		// if (code.img !== '') {
+		// 	fetch(APIURL, {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			Authorization: `Bearer ${authToken.token}`,
+		// 		},
+		// 		body: formData,
+		// 	})
+		// 		.then((response) => response.json())
+		// 		.then((data) => {
+		// 			setNewCode(data._id);
+		// 			console.log(data);
+		// 		})
+		// 		.catch(console.error);
+		// } else {
+		console.log(code);
+		fetch(`${APIURL}${codeId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',
+				Authorization: `Bearer ${authToken.token}`,
 			},
 			body: JSON.stringify(code),
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				setCodeId(data._id);
+				setNewCode(data._id);
 			})
 			.catch(console.error);
 	};
+	// };
 
-	if (codeId) {
-		return <Redirect to={`/${codeId}`} />;
+	if (newCode) {
+		return <Redirect to={`/code/${newCode}`} />;
 	}
 
 	if (!code) {

@@ -1,3 +1,29 @@
 .code-card-img {
 	width: 200px;
 }
+.code-card {
+	background: rgb(233, 233, 233);
+	border-radius: 10px;
+	height: 250px;
+	padding: 10px;
+	box-shadow: 5px 5px 20px gray;
+}
+.box {
+	width: 90vw;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-column-gap: 10px;
+	margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+	.box {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media (min-width: 1000px) {
+	.box {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
