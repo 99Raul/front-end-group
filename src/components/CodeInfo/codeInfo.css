@@ -1,17 +1,35 @@
 .code-info-image {
 	width: 70vw;
+	margin: 0 auto;
 }
 .code-info-snip {
 	display: flex;
 	flex-direction: column;
 	width: 80vw;
-	margin: 0 auto;
+	margin: 0 auto 20px;
 }
 
-.button {
+/* .button {
 	font-size: 16px;
 	padding: 10px 15px;
 	margin: 10px;
 	display: flex;
 	align-items: flex-end;
+} */
+.hello {
+	border: solid red;
+}
+
+.button {
+	padding: 10px 20px;
+	margin: 10px;
+	font-size: 16px;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.button-horizontal {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
