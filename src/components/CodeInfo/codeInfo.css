@@ -16,9 +16,6 @@
 	display: flex;
 	align-items: flex-end;
 } */
-.hello {
-	border: solid red;
-}
 
 .button {
 	padding: 10px 20px;
