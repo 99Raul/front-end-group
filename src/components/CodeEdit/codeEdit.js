@@ -12,6 +12,7 @@ function CodeEdit(props) {
 		fetch(`${APIURL}show/${codeId}`)
 			.then((response) => response.json())
 			.then((data) => {
+				console.log(data);
 				setCode(data);
 			});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,6 +29,23 @@ function CodeEdit(props) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
+		// const formData = new FormData(event.target);
+		// if (code.img !== '') {
+		// 	fetch(APIURL, {
+		// 		method: 'POST',
+		// 		headers: {
+		// 			Authorization: `Bearer ${authToken.token}`,
+		// 		},
+		// 		body: formData,
+		// 	})
+		// 		.then((response) => response.json())
+		// 		.then((data) => {
+		// 			setNewCode(data._id);
+		// 			console.log(data);
+		// 		})
+		// 		.catch(console.error);
+		// } else {
+		console.log(code);
 		fetch(`${APIURL}${codeId}`, {
 			method: 'PUT',
 			headers: {
@@ -42,6 +60,7 @@ function CodeEdit(props) {
 			})
 			.catch(console.error);
 	};
+	// };
 
 	if (newCode) {
 		return <Redirect to={`/code/${newCode}`} />;

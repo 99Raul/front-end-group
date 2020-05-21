@@ -37,7 +37,6 @@ function codeForm(props) {
 			<label htmlFor='image'>Image</label>
 			<input
 				type='file'
-				value={props.code.img}
 				onChange={props.handleChange}
 				placeholder='Code image'
 				name='img'

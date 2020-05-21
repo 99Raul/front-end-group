@@ -43,38 +43,40 @@ function Login(props) {
 	}
 
 	return (
-		<div className='wrapper'>
-			<div className='col'>
-				<form onSubmit={handleSubmit}>
-					<h1> Please sign In</h1>
-					<div className='form-group1'>
-						<label htmlFor='username'>Username</label>
-						<input
-							type='username'
-							className='form-control'
-							name='username'
-							placeholder='Username'
-							value={user.username}
-							onChange={handleChange}
-						/>
-					</div>
-					<div className='form-group2'>
-						<label htmlFor='password'>password</label>
-						<input
-							type='password'
-							className='form-control'
-							name='password'
-							placeholder='Enter Password'
-							value={user.password}
-							onChange={handleChange}
-						/>
-					</div>
-					<button type='submit' className='btn'>
-						Sign In
-					</button>
-				</form>
+		<form onSubmit={handleSubmit} className='form-container'>
+			<h1> Please sign In</h1>
+			<div className='form-group1'>
+				<label htmlFor='username' className='label1'>
+					Username
+				</label>
+				<input
+					type='username'
+					className='form-control'
+					name='username'
+					placeholder='Username'
+					value={user.username}
+					onChange={handleChange}
+				/>
 			</div>
-		</div>
+			<div className='form-group2'>
+				<label htmlFor='password' className='label2'>
+					password
+				</label>
+				<input
+					type='password'
+					className='form-control'
+					name='password'
+					placeholder='Enter Password'
+					value={user.password}
+					onChange={handleChange}
+				/>
+			</div>
+			<div className='button-container'>
+				<button type='submit' className='btn'>
+					Sign In
+				</button>
+			</div>
+		</form>
 	);
 }
 
