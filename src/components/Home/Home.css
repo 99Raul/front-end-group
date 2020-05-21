@@ -35,8 +35,7 @@ a:active {
 }
 
 .modal {
-	background: rgba(255, 255, 255, 0);
-	z-index: 1;
+	background: rgba(24, 24, 24, 0.481);
 	position: fixed;
 	top: 0;
 	width: 100vw;

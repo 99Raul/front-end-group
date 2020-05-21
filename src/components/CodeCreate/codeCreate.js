@@ -13,6 +13,7 @@ function CreateCode(props) {
 	const { authToken } = props;
 	const [code, setCode] = useState(initialCode);
 	const [newCodeId, setNewCodeId] = useState(null);
+	const [notLoggedIn, setNotLoggedIn] = useState(false);
 
 	const handleChange = (event) => {
 		event.persist();
@@ -24,19 +25,23 @@ function CreateCode(props) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const formData = new FormData(event.target)
-		fetch(APIURL, {
-			method: 'POST',
-			headers: {
-				Authorization: `Bearer ${authToken.token}`,
-			},
-			body: formData,
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setNewCodeId(data._id);
+		const formData = new FormData(event.target);
+		if (authToken !== null) {
+			fetch(APIURL, {
+				method: 'POST',
+				headers: {
+					Authorization: `Bearer ${authToken.token}`,
+				},
+				body: formData,
 			})
-			.catch(console.error);
+				.then((response) => response.json())
+				.then((data) => {
+					setNewCodeId(data._id);
+				})
+				.catch();
+		} else {
+			setNotLoggedIn(true);
+		}
 	};
 
 	if (newCodeId) {
@@ -50,6 +55,7 @@ function CreateCode(props) {
 				code={code}
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
+				notLoggedIn={notLoggedIn}
 			/>
 		</>
 	);

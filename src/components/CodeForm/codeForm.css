@@ -57,3 +57,7 @@
 	width: 60%;
 	color: rgb(29, 29, 29);
 }
+
+.not-login{
+	color: red;
+}

@@ -12,7 +12,7 @@ function App() {
 	const [authToken, setAuthToken] = useState(null);
 
 	return (
-		<div className = "main">
+		<div className='main'>
 			<Route
 				path='*'
 				render={() => {
@@ -34,6 +34,7 @@ function App() {
 								searchString={searchString}
 								setSearchString={setSearchString}
 								authToken={authToken}
+								setAuthToken={setAuthToken}
 							/>
 						);
 					}}
@@ -66,13 +67,6 @@ function App() {
 								authToken={authToken}
 							/>
 						);
-					}}
-				/>
-				<Route
-					exact
-					path='/login'
-					render={() => {
-						return <Login authToken={authToken} setAuthToken={setAuthToken} />;
 					}}
 				/>
 			</Switch>

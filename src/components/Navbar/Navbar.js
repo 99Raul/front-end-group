@@ -38,15 +38,10 @@ const menuItems = [
 		listText: 'Home',
 		listPath: '/',
 	},
-	// {
-	// 	listIcon: <AssignmentInd />,
-	// 	listText: 'Sign Up',
-	// 	listPath: 'signup',
-	// },
 	{
 		listIcon: <People />,
-		listText: 'Users Followed',
-		listPath: 'users',
+		listText: 'Create Code',
+		listPath: '/create',
 	},
 ];
 
@@ -66,7 +61,6 @@ function Navbar(props) {
 			component='div'
 			onClick={toggleSlider(slider, false)}>
 			<Divider />
-
 
 			<List>
 				{menuItems.map((isItem, key) => (

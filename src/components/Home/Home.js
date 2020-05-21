@@ -6,18 +6,16 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 
 function Home(props) {
-	const { searchString, setSearchString, authToken } = props;
+	const { searchString, setSearchString, authToken, setAuthToken } = props;
 	const [login, setLogin] = useState(false);
 	const [signUp, setSignUp] = useState(false);
 
 	const handleLogin = () => {
 		setLogin(!login);
-		console.log(login);
 	};
 
 	const handleSignUp = () => {
 		setSignUp(!signUp);
-		console.log(signUp);
 	};
 
 	return (
@@ -26,11 +24,6 @@ function Home(props) {
 				{authToken !== null && (
 					<div className='link'>
 						<Link to='/create'>Create New Code</Link>
-					</div>
-				)}
-				{authToken === null && (
-					<div className='link'>
-						<Link to='/login'>Login</Link>
 					</div>
 				)}
 				{authToken === null && (
@@ -51,7 +44,11 @@ function Home(props) {
 			)}
 			{login && (
 				<div className='modal'>
-					<Login handleLogin={handleLogin} />
+					<Login
+						handleLogin={handleLogin}
+						authToken={authToken}
+						setAuthToken={setAuthToken}
+					/>
 				</div>
 			)}
 			<h1>Home Page</h1>

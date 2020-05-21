@@ -36,7 +36,8 @@ function Login(props) {
 				setAuthToken(data);
 				setLogin(true);
 			})
-			.catch(() => {
+			.catch((err) => {
+				console.log(err)
 				setFailLogin(true);
 			});
 	};
@@ -46,41 +47,40 @@ function Login(props) {
 	}
 
 	return (
-		<form onSubmit={handleSubmit} className='form-container'>
-			<h1> Please sign In</h1>
-			<div className='form-group1'>
-				<label htmlFor='username' className='label1'>
-					Username
-				</label>
-				<input
-					type='username'
-					className='form-control'
-					name='username'
-					placeholder='Username'
-					value={user.username}
-					onChange={handleChange}
-				/>
+		<>
+			<div className='wrapper'>
+				<div className='form-wrapper'>
+					<button className='close' onClick={props.handleLogin}>
+						X
+					</button>
+					<h1>Sign In</h1>
+					<form onSubmit={handleSubmit}>
+						<div className='userName'>
+							<label htmlFor='userName'>User Name</label>
+							<input
+								placeholder='User Name'
+								type='text'
+								name='username'
+								onChange={handleChange}
+							/>
+						</div>
+						<div className='password'>
+							<label htmlFor='password'>Password</label>
+							<input
+								placeholder='Password'
+								type='password'
+								name='password'
+								onChange={handleChange}
+							/>
+						</div>
+						<div className='loginAccount'>
+							<button type='submit'>Submit</button>
+						</div>
+					</form>
+					{failLogin && <p className='fail-login'>Login Failed Try Again!</p>}
+				</div>
 			</div>
-			<div className='form-group2'>
-				<label htmlFor='password' className='label2'>
-					password
-				</label>
-				<input
-					type='password'
-					className='form-control'
-					name='password'
-					placeholder='Enter Password'
-					value={user.password}
-					onChange={handleChange}
-				/>
-			</div>
-			<div className='button-container'>
-				<button type='submit' className='btn'>
-					Sign In
-				</button>
-			</div>
-			{failLogin && <p className='fail-login'>Login Failed Try Again!</p>}
-		</form>
+		</>
 	);
 }
 

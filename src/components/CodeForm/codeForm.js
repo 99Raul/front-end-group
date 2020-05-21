@@ -57,6 +57,8 @@ function codeForm(props) {
 				id='img'
 			/>
 
+			{props.notLoggedIn && <p className='not-login'>You must log in</p>}
+
 			<button className='submit-button' type='submit'>
 				Submit
 			</button>
