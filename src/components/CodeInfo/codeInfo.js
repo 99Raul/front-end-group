@@ -52,7 +52,7 @@ function CodeInfo(props) {
 			<p>{code.description}</p>
 			<img className='code-info-image' src={code.img} alt={code.description} />
 			<div>
-				<Link to={`${code._id}/edit`} className='button'>
+				<Link to={`${code._id}/edit`} className='not-a-button'>
 					Edit
 				</Link>
 				<button className='button' onClick={deleteCode}>

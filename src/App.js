@@ -13,7 +13,7 @@ function App() {
 	const [authToken, setAuthToken] = useState(null);
 
 	return (
-		<>
+		<div className = "main">
 			<Route
 				path='*'
 				render={() => {
@@ -78,7 +78,7 @@ function App() {
 					}}
 				/>
 			</Switch>
-		</>
+		</div>
 	);
 }
 

@@ -1,10 +1,10 @@
 import React from 'react';
-
+import "./codeForm.css";
 function codeForm(props) {
 	return (
-		<form encType='multipart/form-data' onSubmit={props.handleSubmit}>
+		<form className = "code-form" encType='multipart/form-data' onSubmit={props.handleSubmit}>
 			<label htmlFor='title'>Title</label>
-			<input
+			<input className = "title-input"
 				type='text'
 				placeholder='Code Title'
 				value={props.code.title}
@@ -15,7 +15,7 @@ function codeForm(props) {
 			/>
 
 			<label htmlFor='body'>Code</label>
-			<textarea
+			<textarea className = "code-input"
 				rows='25'
 				value={props.code.body}
 				onChange={props.handleChange}
@@ -25,7 +25,7 @@ function codeForm(props) {
 			/>
 
 			<label htmlFor='description'>Description</label>
-			<input
+			<input className = "description-input"
 				type='text'
 				value={props.code.description}
 				onChange={props.handleChange}
@@ -35,7 +35,7 @@ function codeForm(props) {
 			/>
 
 			<label htmlFor='image'>Image</label>
-			<input
+			<input className = "image-input"
 				type='file'
 				onChange={props.handleChange}
 				placeholder='Code image'
@@ -43,7 +43,7 @@ function codeForm(props) {
 				id='img'
 			/>
 
-			<button type='submit'>Submit</button>
+			<button className = "submit-button" type='submit'>Submit</button>
 		</form>
 	);
 }

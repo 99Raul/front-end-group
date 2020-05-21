@@ -1,0 +1,32 @@
+.code-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-input {
+    background: rgb(255, 255, 255);
+    width: 200px;
+    height: 20px;
+    display: flex;
+    position: center;
+    font-size: 10px;
+}
+
+.description-input {
+    background: rgb(255, 255, 255);
+    height: 200px;
+    width: 300px;
+    text-align: center;
+}
+
+.image-input {
+    background: rgb(114, 195, 229);
+    width: 300px;
+    font-size: 15px;
+}
+
+.submit-button{
+    margin: 10px;
+}
