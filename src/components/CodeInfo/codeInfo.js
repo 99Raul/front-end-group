@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { APIURL } from '../../config';
 import './codeInfo.css';
-import { CodeBlock, dracula } from 'react-code-blocks';
+import { CodeBlock, atomOneDark } from 'react-code-blocks';
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { railscasts }from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
 function CodeInfo(props) {
 	const { authToken } = props;
@@ -47,9 +49,12 @@ function CodeInfo(props) {
 			<CodeBlock
 				text={code.body}
 				language='javascript'
-				theme={dracula}
+				theme={atomOneDark}
 				wrapLines
 			/>
+			<SyntaxHighlighter language='javascript' style={railscasts} showLineNumbers={true}>
+				{code.body}
+			</SyntaxHighlighter>
 			<p>{code.description}</p>
 			<img className='code-info-image' src={code.img} alt={code.description} />
 			<div>
