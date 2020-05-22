@@ -14,11 +14,11 @@ Application where users can post and share code snippets. Users can post their o
 
 ### Landing Page
 
-![Screen Shot 2020-05-22 at 9 13 54 AM](https://user-images.githubusercontent.com/58124052/82677265-5b63da80-9c0d-11ea-9402-d9a3c39dfafa.png)
+![Screen Shot 2020-05-22 at 9 13 13 AM](https://user-images.githubusercontent.com/58124052/82677266-5b63da80-9c0d-11ea-868d-c4cd1862963c.png)
 
 ### Sign Up Page
 
-![Screen Shot 2020-05-22 at 9 13 13 AM](https://user-images.githubusercontent.com/58124052/82677266-5b63da80-9c0d-11ea-868d-c4cd1862963c.png)
+![Screen Shot 2020-05-22 at 9 13 54 AM](https://user-images.githubusercontent.com/58124052/82677265-5b63da80-9c0d-11ea-9402-d9a3c39dfafa.png)
 
 ## Technologies Used
 
@@ -27,6 +27,7 @@ Application where users can post and share code snippets. Users can post their o
 - JavaScript
 - ReactJS
 - React Router
+- Material-Ui
 
 ## Features
 
