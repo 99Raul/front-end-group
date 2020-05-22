@@ -60,7 +60,7 @@ function codeForm(props) {
 				/>
 			</div>
 
-			{props.code.img && <p className='image-added'>Image Added!</p>}
+			{props.containsImage && <p className='image-added'>Image Added!</p>}
 
 			{props.notLoggedIn && <p className='not-login'>You must be logged in</p>}
 

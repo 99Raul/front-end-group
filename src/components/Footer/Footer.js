@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
-import { Business, Mail, GitHub } from '@material-ui/icons';
+import { Business, GitHub } from '@material-ui/icons';
 
 const useStyles = makeStyles({
 	root: {
@@ -30,12 +30,9 @@ function Footer(props) {
 			<BottomNavigationAction
 				className={classes.root}
 				style={{ padding: 0 }}
-				icon={<Mail />}
-			/>
-			<BottomNavigationAction
-				className={classes.root}
-				style={{ padding: 0 }}
-				icon={<GitHub />}
+				icon={
+					<GitHub href='https://git.generalassemb.ly/seir-323/project-3/blob/master/presentations.md' />
+				}
 			/>
 		</BottomNavigation>
 	);

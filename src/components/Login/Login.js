@@ -5,7 +5,7 @@ import './Login.css';
 // import styles from './Login.module.css'
 
 function Login(props) {
-	const { setAuthToken, setNewLogin, newLogin } = props;
+	const { setAuthToken, setNewLogin } = props;
 	const initialUser = {
 		username: '',
 		password: '',

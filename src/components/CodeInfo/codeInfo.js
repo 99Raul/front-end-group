@@ -49,7 +49,7 @@ function CodeInfo(props) {
 	if (user && user._id === code.author._id) {
 		return (
 			<div className='code-info-snip'>
-				<h1>Code Snippet</h1>
+				<h1>Code Share</h1>
 				<h2>{code.title}</h2>
 				<CodeBlock
 					text={code.body}
@@ -78,7 +78,7 @@ function CodeInfo(props) {
 
 	return (
 		<div className='code-info-snip'>
-			<h1>Code Snippet</h1>
+			<h1>Code Share</h1>
 			<h2>{code.title}</h2>
 			<CodeBlock
 				text={code.body}

@@ -7,6 +7,7 @@ function CodeEdit(props) {
 	const { codeId, authToken } = props;
 	const [code, setCode] = useState(null);
 	const [newCode, setNewCode] = useState(null);
+	const [containsImage, setContainsImage] = useState('');
 
 	useEffect(() => {
 		fetch(`${APIURL}show/${codeId}`)
@@ -24,6 +25,10 @@ function CodeEdit(props) {
 			...code,
 			[event.target.name]: event.target.value,
 		});
+		if (event.target.name === 'img') {
+			
+			setContainsImage(event.target.value);
+		}
 	};
 
 	const handleSubmit = (event) => {
@@ -41,7 +46,7 @@ function CodeEdit(props) {
 			.then((response) => response.json())
 			.then((data) => {
 				setNewCode(data._id);
-				console.log(data);
+				
 			})
 			.catch(console.error);
 	};
@@ -62,6 +67,7 @@ function CodeEdit(props) {
 				code={code}
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
+				containsImage={containsImage}
 			/>
 		</>
 	);

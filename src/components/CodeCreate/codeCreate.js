@@ -14,6 +14,7 @@ function CreateCode(props) {
 	const [code, setCode] = useState(initialCode);
 	const [newCodeId, setNewCodeId] = useState(null);
 	const [notLoggedIn, setNotLoggedIn] = useState(false);
+	const [containsImage, setContainsImage] = useState('');
 
 	const handleChange = (event) => {
 		event.persist();
@@ -21,6 +22,10 @@ function CreateCode(props) {
 			...code,
 			[event.target.name]: event.target.value,
 		});
+
+		if (event.target.name === 'img') {
+			setContainsImage(event.target.value);
+		}
 	};
 
 	const handleSubmit = (event) => {
@@ -50,12 +55,13 @@ function CreateCode(props) {
 
 	return (
 		<>
-			<h1>Create a new code snippet</h1>
+			<h1>Create A New Code Share</h1>
 			<CodeForm
 				code={code}
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
 				notLoggedIn={notLoggedIn}
+				containsImage={containsImage}
 			/>
 		</>
 	);
