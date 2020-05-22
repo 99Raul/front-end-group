@@ -22,18 +22,19 @@ function Footer(props) {
 	const classes = useStyles();
 	return (
 		<BottomNavigation width='auto' style={{ background: '#DDDDDD' }}>
-			<BottomNavigationAction
-				className={classes.root}
-				style={{ padding: 0 }}
-				icon={<Business />}
-			/>
-			<BottomNavigationAction
-				className={classes.root}
-				style={{ padding: 0 }}
-				icon={
-					<GitHub href='https://git.generalassemb.ly/seir-323/project-3/blob/master/presentations.md' />
-				}
-			/>
+				<BottomNavigationAction
+					className={classes.root}
+					style={{ padding: 0 }}
+					icon={<Business />}
+				/>
+			
+			
+				<BottomNavigationAction
+					className={classes.root}
+					style={{ padding: 0 }}
+					icon={<GitHub />}
+				/>
+			
 		</BottomNavigation>
 	);
 }

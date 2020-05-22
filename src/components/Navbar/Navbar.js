@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MobileLeftMenuSlider from '@material-ui/core/Drawer';
-import Footer from '../Footer/Footer';
+// import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
 import Searchbar from '../Searchbar/Searchbar';
 
@@ -131,7 +131,7 @@ function Navbar(props) {
 							{props.authToken === ''
 								? sideListPre('left')
 								: sideListPost('left')}
-							<Footer />
+							{/* <Footer /> */}
 						</MobileLeftMenuSlider>
 					</Toolbar>
 				</AppBar>
