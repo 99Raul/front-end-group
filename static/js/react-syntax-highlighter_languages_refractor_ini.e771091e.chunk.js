@@ -1,2 +1,0 @@
-(this["webpackJsonpsnippet-app"]=this["webpackJsonpsnippet-app"]||[]).push([[60],{259:function(t,n,s){"use strict";function p(t){t.languages.ini={comment:/^[ \t]*[;#].*$/m,selector:/^[ \t]*\[.*?\]/m,constant:/^[ \t]*[^\s=]+?(?=[ \t]*=)/m,"attr-value":{pattern:/=.*/,inside:{punctuation:/^[=]/}}}}t.exports=p,p.displayName="ini",p.aliases=[]}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_refractor_ini.e771091e.chunk.js.map
