@@ -1,14 +1,14 @@
-input {
+.searchbar {
 	background: rgb(232, 232, 232);
 	flex-grow: 1;
 }
-input:focus,
-input:hover,
+.searchbar:focus,
+.searchbar:hover,
 .submit:focus,
 .submit:hover {
 	background: rgb(196, 196, 196);
 }
-input,
+.searchbar,
 .submit {
 	border: 2px solid black;
 	font-size: 1.1rem;

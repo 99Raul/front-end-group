@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './codeForm.css';
 function codeForm(props) {
 	return (
@@ -46,17 +45,22 @@ function codeForm(props) {
 				id='description'
 			/>
 
-			<label className='label' htmlFor='image'>
-				Image
-			</label>
-			<input
-				className='image-input'
-				type='file'
-				onChange={props.handleChange}
-				placeholder='Code image'
-				name='img'
-				id='img'
-			/>
+				<label className='label' htmlFor='image'>
+					Image
+				</label>
+			<div className='image-input'>
+				<input
+					className='image'
+					type='file'
+					onChange={props.handleChange}
+					placeholder='Code image'
+					accept='image/*'
+					name='img'
+					id='img'
+				/>
+			</div>
+
+			{props.code.img && <p className='image-added'>Image Added!</p>}
 
 			{props.notLoggedIn && <p className='not-login'>You must be logged in</p>}
 

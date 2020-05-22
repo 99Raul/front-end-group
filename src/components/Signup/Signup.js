@@ -12,24 +12,6 @@ const emailRegex = RegExp(
 	/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 
-const formValid = ({ formErrors, ...rest }) => {
-	// set valid to true if everything checksout return valid
-	let valid = true;
-
-	// validate form errors being empty
-	Object.values(formErrors).forEach((val) => {
-		val.length > 0 && (valid = false);
-	});
-
-	// validate the form was filled out
-	// rest is iterating all the other values userName, email , password, foreach of those check if null, if null return false
-	Object.values(rest).forEach((val) => {
-		val === null && (valid = false);
-	});
-
-	return valid;
-};
-
 class Signup extends Component {
 	constructor(props) {
 		super(props);
@@ -39,6 +21,7 @@ class Signup extends Component {
 			email: null,
 			password: null,
 			createdUser: false,
+			showPassword: false,
 			//hold strings for errors that pop up
 			// this formErrors I am passing it along to form Valid function
 			formErrors: {
@@ -68,15 +51,11 @@ class Signup extends Component {
 			.then((response) => response.json())
 			.then((data) => {
 				this.setState({ createdUser: true });
+				this.props.handleSignUp();
+				this.props.handleLogin();
 			})
 			.catch(console.error);
 	};
-
-	componentDidUpdate() {
-		if (this.state.createdUser) {
-			console.log(this.state.createdUser);
-		}
-	}
 
 	handleChange = (e) => {
 		e.preventDefault();
@@ -112,7 +91,7 @@ class Signup extends Component {
 
 		return (
 			<>
-				{this.state.createdUser && <Redirect to='/login' />}
+				{this.state.createdUser && <Redirect to='/' />}
 				<div className='wrapper'>
 					<div className='form-wrapper'>
 						<button className='close' onClick={this.props.handleSignUp}>
@@ -153,10 +132,16 @@ class Signup extends Component {
 								<input
 									className={formErrors.password.length > 0 ? 'error' : null}
 									placeholder='Password'
-									type='password'
+									type={this.state.showPassword ? 'text' : 'password'}
 									name='password'
 									onChange={this.handleChange}
 								/>
+								<span
+									className='toggle-password'
+									onMouseEnter={() => this.setState({ showPassword: true })}
+									onMouseLeave={() => this.setState({ showPassword: false })}>
+									{this.state.showPassword ? '🙈' : '👀 Hover + type'}
+								</span>
 								{formErrors.password.length > 0 && (
 									<span className='errorMessage'>{formErrors.password}</span>
 								)}

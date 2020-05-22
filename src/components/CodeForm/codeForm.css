@@ -17,7 +17,7 @@
 	border: 1px solid gray;
 	border-radius: 5px;
 	background: rgb(255, 255, 255);
-    width: 60%;
+	width: 60%;
 }
 
 .title-input {
@@ -35,14 +35,49 @@
 	width: 60%;
 	font-size: 14px;
 	border-radius: 10px;
+	text-align: center;
+
+	align-items: center;
+	border: 3px dashed rgb(80, 137, 162);
+	color: rgb(80, 137, 162);
+	display: flex;
+	flex-direction: column;
+	font-size: 1rem;
+	height: 200px;
+	justify-content: center;
+	padding: 1rem;
+	position: relative;
+	text-align: center;
+	transition: background-color 0.3s;
 }
 
+.image-input::before {
+	content: 'Drag image here or \A click to browse files';
+	margin: 0 0 1rem;
+	white-space: pre;
+}
+
+.image-input > input {
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.image-added {
+	color: green
+}
+
+
 .submit-button {
-    margin: 10px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    border: 1px solid gray;
+	margin: 10px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 14px;
+	border: 1px solid gray;
 }
 
 @media (max-width: 800px) {
@@ -58,6 +93,6 @@
 	color: rgb(29, 29, 29);
 }
 
-.not-login{
+.not-login {
 	color: red;
 }

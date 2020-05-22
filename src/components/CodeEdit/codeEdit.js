@@ -7,7 +7,6 @@ function CodeEdit(props) {
 	const { codeId, authToken } = props;
 	const [code, setCode] = useState(null);
 	const [newCode, setNewCode] = useState(null);
-	const [notLoggedIn, setNotLoggedIn] = useState(false);
 
 	useEffect(() => {
 		fetch(`${APIURL}show/${codeId}`)
@@ -63,7 +62,6 @@ function CodeEdit(props) {
 				code={code}
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
-				notLoggedIn={notLoggedIn}
 			/>
 		</>
 	);

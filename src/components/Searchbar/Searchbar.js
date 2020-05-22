@@ -23,6 +23,7 @@ function SearchBar(props) {
 		<form onSubmit={handleSubmit} className='form-horizontal'>
 			<input
 				type='text'
+				className='searchbar'
 				name='searchString'
 				required
 				placeholder='Search'

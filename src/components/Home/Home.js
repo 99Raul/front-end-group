@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import CodeList from '../CodeList/codeList';
 import Signup from '../Signup/Signup';
 import Login from '../Login/Login';
-import { Link } from 'react-router-dom';
 import './Home.css';
 
 function Home(props) {
@@ -17,16 +16,31 @@ function Home(props) {
 		handleSignUp,
 	} = props;
 
-		const handleAlreadyHaveAccount = () => {
-			handleLogin();
-			handleSignUp();
-		};
+	const [newLogin, setNewLogin] = useState(false);
+
+	const handleAlreadyHaveAccount = () => {
+		handleLogin();
+		handleSignUp();
+	};
+
+	const handleCloseWindow = () => {
+		setNewLogin(false);
+	};
 
 	return (
 		<>
+			{login ? (
+				<p>Click the menu to create code</p>
+			) : (
+				<p>Click the menu to log in</p>
+			)}
 			{signUp && (
 				<div className='modal'>
-					<Signup handleSignUp={handleSignUp} handleAlreadyHaveAccount={handleAlreadyHaveAccount} />
+					<Signup
+						handleSignUp={handleSignUp}
+						handleAlreadyHaveAccount={handleAlreadyHaveAccount}
+						handleLogin={handleLogin}
+					/>
 				</div>
 			)}
 			{login && (
@@ -35,7 +49,22 @@ function Home(props) {
 						handleLogin={handleLogin}
 						authToken={authToken}
 						setAuthToken={setAuthToken}
+						setNewLogin={setNewLogin}
+						newLogin={newLogin}
 					/>
+				</div>
+			)}
+			{newLogin && (
+				<div className='modal'>
+					<div className='wrapper'>
+						<div className='logged-in'>
+							<button className='close' onClick={handleCloseWindow}>
+								X
+							</button>
+							<h1>Signed in as</h1>
+							<h1>{authToken.username}</h1>
+						</div>
+					</div>
 				</div>
 			)}
 			<h1>Home Page</h1>

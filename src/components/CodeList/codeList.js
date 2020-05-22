@@ -23,7 +23,6 @@ function CodeList(props) {
 			.then((response) => response.json())
 			.then((data) => {
 				setUser(data);
-				console.log(authToken);
 			});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [authToken.username]);
@@ -35,7 +34,6 @@ function CodeList(props) {
 	if (error) {
 		return <div>There was an error retrieving the code</div>;
 	}
-	console.log(user);
 	return (
 		<div className='box'>
 			{filteredCodes.map((code) => (

@@ -26,7 +26,7 @@ function CreateCode(props) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const formData = new FormData(event.target);
-		if (authToken !== null) {
+		if (authToken !== '') {
 			fetch(APIURL, {
 				method: 'POST',
 				headers: {

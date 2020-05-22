@@ -5,7 +5,7 @@ import './Login.css';
 // import styles from './Login.module.css'
 
 function Login(props) {
-	const { authToken, setAuthToken } = props;
+	const { setAuthToken, setNewLogin, newLogin } = props;
 	const initialUser = {
 		username: '',
 		password: '',
@@ -35,6 +35,7 @@ function Login(props) {
 				// console.log(data);
 				setAuthToken(data);
 				setLogin(true);
+				setNewLogin(true);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -43,6 +44,7 @@ function Login(props) {
 	};
 
 	if (login) {
+
 		return <Redirect to='/' />;
 	}
 

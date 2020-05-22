@@ -32,19 +32,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const menuItems = [
-	{
-		listIcon: <Home />,
-		listText: 'Home',
-		listPath: '/',
-	},
-	{
-		listIcon: <Create />,
-		listText: 'Create Code',
-		listPath: '/create',
-	},
-];
-
 function Navbar(props) {
 	const [state, setState] = useState({
 		left: false,
@@ -55,7 +42,7 @@ function Navbar(props) {
 
 	const classes = useStyles();
 
-	const sideList = (slider) => (
+	const sideListPre = (slider) => (
 		<Box
 			className={classes.menuSliderContainer}
 			component='div'
@@ -63,56 +50,67 @@ function Navbar(props) {
 			<Divider />
 
 			<List>
-				{props.authToken !== '' && (
-					<ListItem button component={Link} to='/'>
-						<ListItemIcon>
-							<People />
-						</ListItemIcon>
-						<ListItemText
-							className={classes.listTextColor}
-							primary={props.authToken.username}
-						/>
-					</ListItem>
-				)}
-				{props.authToken === '' && (
-					<>
-						<ListItem button onClick={props.handleLogin}>
-							<ListItemIcon>
-								<People />
-							</ListItemIcon>
-							<ListItemText className={classes.listTextColor} primary='Login' />
-						</ListItem>
-						<ListItem button onClick={props.handleSignUp}>
-							<ListItemIcon>
-								<People />
-							</ListItemIcon>
-							<ListItemText
-								className={classes.listTextColor}
-								primary='Sign Up'
-							/>
-						</ListItem>
-					</>
-				)}
+				<ListItem button component={Link} to='/' onClick={props.handleLogin}>
+					<ListItemIcon>
+						<People />
+					</ListItemIcon>
+					<ListItemText className={classes.listTextColor} primary='Login' />
+				</ListItem>
+				<ListItem button component={Link} to='/' onClick={props.handleSignUp}>
+					<ListItemIcon>
+						<People />
+					</ListItemIcon>
+					<ListItemText className={classes.listTextColor} primary='Sign Up' />
+				</ListItem>
+
 				<ListItem button component={Link} to='/'>
 					<ListItemIcon>
 						<Home />
 					</ListItemIcon>
 					<ListItemText className={classes.listTextColor} primary='Home' />
 				</ListItem>
-				{props.authToken !== '' && (
-					<ListItem button component={Link} to='/create'>
-						<ListItemIcon>
-							<Create />
-						</ListItemIcon>
-						<ListItemText
-							className={classes.listTextColor}
-							primary='Create Code'
-						/>
-					</ListItem>
-				)}
 			</List>
 		</Box>
 	);
+
+	const sideListPost = (slider) => (
+		<Box
+			className={classes.menuSliderContainer}
+			component='div'
+			onClick={toggleSlider(slider, false)}>
+			<Divider />
+
+			<List>
+				<ListItem button component={Link} to='/'>
+					<ListItemIcon>
+						<People />
+					</ListItemIcon>
+					<ListItemText
+						className={classes.listTextColor}
+						primary={props.authToken.username}
+					/>
+				</ListItem>
+
+				<ListItem button component={Link} to='/'>
+					<ListItemIcon>
+						<Home />
+					</ListItemIcon>
+					<ListItemText className={classes.listTextColor} primary='Home' />
+				</ListItem>
+
+				<ListItem button component={Link} to='/create'>
+					<ListItemIcon>
+						<Create />
+					</ListItemIcon>
+					<ListItemText
+						className={classes.listTextColor}
+						primary='Create Code'
+					/>
+				</ListItem>
+			</List>
+		</Box>
+	);
+
 	return (
 		<>
 			<Box component='nav'>
@@ -130,7 +128,9 @@ function Navbar(props) {
 							anchor='left'
 							open={state.left}
 							onClose={toggleSlider('left', false)}>
-							{sideList('left')}
+							{props.authToken === ''
+								? sideListPre('left')
+								: sideListPost('left')}
 							<Footer />
 						</MobileLeftMenuSlider>
 					</Toolbar>
