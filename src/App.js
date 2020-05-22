@@ -5,7 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import CodeInfo from './components/CodeInfo/codeInfo';
 import CodeEdit from './components/CodeEdit/codeEdit';
 import { Route, Switch } from 'react-router-dom';
-import Login from './components/Login/Login';
+
 
 function App() {
 	const [searchString, setSearchString] = useState('');

@@ -1,5 +1,6 @@
 import React from 'react';
-import "./codeForm.css";
+import { Link } from 'react-router-dom';
+import './codeForm.css';
 function codeForm(props) {
 	return (
 		<form
@@ -57,7 +58,7 @@ function codeForm(props) {
 				id='img'
 			/>
 
-			{props.notLoggedIn && <p className='not-login'>You must log in</p>}
+			{props.notLoggedIn && <p className='not-login'>You must be logged in</p>}
 
 			<button className='submit-button' type='submit'>
 				Submit

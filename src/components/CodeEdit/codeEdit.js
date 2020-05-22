@@ -7,6 +7,7 @@ function CodeEdit(props) {
 	const { codeId, authToken } = props;
 	const [code, setCode] = useState(null);
 	const [newCode, setNewCode] = useState(null);
+	const [notLoggedIn, setNotLoggedIn] = useState(false);
 
 	useEffect(() => {
 		fetch(`${APIURL}show/${codeId}`)
@@ -28,36 +29,20 @@ function CodeEdit(props) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
-		// const formData = new FormData(event.target);
-		// if (code.img !== '') {
-		// 	fetch(APIURL, {
-		// 		method: 'POST',
-		// 		headers: {
-		// 			Authorization: `Bearer ${authToken.token}`,
-		// 		},
-		// 		body: formData,
-		// 	})
-		// 		.then((response) => response.json())
-		// 		.then((data) => {
-		// 			setNewCode(data._id);
-		// 			console.log(data);
-		// 		})
-		// 		.catch(console.error);
-		// } else {
 		console.log(code);
+		const formData = new FormData(event.target);
+		
 		fetch(`${APIURL}${codeId}`, {
 			method: 'PUT',
 			headers: {
-				'Content-type': 'application/json; charset=UTF-8',
 				Authorization: `Bearer ${authToken.token}`,
 			},
-			body: JSON.stringify(code),
+			body: formData,
 		})
 			.then((response) => response.json())
 			.then((data) => {
 				setNewCode(data._id);
-				console.log(data)
+				console.log(data);
 			})
 			.catch(console.error);
 	};
@@ -78,6 +63,7 @@ function CodeEdit(props) {
 				code={code}
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
+				notLoggedIn={notLoggedIn}
 			/>
 		</>
 	);
