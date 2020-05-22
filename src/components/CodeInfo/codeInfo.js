@@ -9,6 +9,7 @@ function CodeInfo(props) {
 	const [code, setCode] = useState(null);
 	const [deleted, setDeleted] = useState(false);
 	const [returnCode, setReturn] = useState(false);
+	const [user, setUser] = useState('');
 
 	useEffect(() => {
 		fetch(`${APIURL}show/${props.codeId}`)
@@ -16,6 +17,12 @@ function CodeInfo(props) {
 			.then((data) => {
 				setCode(data);
 				setReturn(true);
+			});
+
+		fetch(`${APIURL}users/${authToken.username}`)
+			.then((response) => response.json())
+			.then((data) => {
+				setUser(data);
 			});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -39,6 +46,36 @@ function CodeInfo(props) {
 		return <div>Loading...</div>;
 	}
 
+	if (user && user._id === code.author._id) {
+		return (
+			<div className='code-info-snip'>
+				<h1>Code Snippet</h1>
+				<h2>{code.title}</h2>
+				<CodeBlock
+					text={code.body}
+					language='javascript'
+					theme={atomOneDark}
+					wrapLines
+					className='hello'
+				/>
+				<p>{code.description}</p>
+				<img
+					className='code-info-image'
+					src={code.img}
+					alt={code.description}
+				/>
+				<div className='button-horizontal'>
+					<Link to={`${code._id}/edit`} className='button'>
+						Edit
+					</Link>
+					<button className='button' onClick={deleteCode}>
+						Delete
+					</button>
+				</div>
+			</div>
+		);
+	}
+
 	return (
 		<div className='code-info-snip'>
 			<h1>Code Snippet</h1>
@@ -52,14 +89,6 @@ function CodeInfo(props) {
 			/>
 			<p>{code.description}</p>
 			<img className='code-info-image' src={code.img} alt={code.description} />
-			<div className='button-horizontal'>
-				<Link to={`${code._id}/edit`} className='button'>
-					Edit
-				</Link>
-				<button className='button' onClick={deleteCode}>
-					Delete
-				</button>
-			</div>
 		</div>
 	);
 }

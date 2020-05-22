@@ -7,7 +7,7 @@ function CodeList(props) {
 	const [codes, setCode] = useState([]);
 	const [error, setError] = useState(false);
 	const { searchString, authToken } = props;
-	const [user, setUser] = useState();
+	const [user, setUser] = useState('');
 
 	useEffect(() => {
 		fetch(APIURL)
