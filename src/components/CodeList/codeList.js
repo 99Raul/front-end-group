@@ -6,7 +6,8 @@ import './codeList.css';
 function CodeList(props) {
 	const [codes, setCode] = useState([]);
 	const [error, setError] = useState(false);
-	const { searchString } = props;
+	const { searchString, authToken } = props;
+	const [user, setUser] = useState();
 
 	useEffect(() => {
 		fetch(APIURL)
@@ -17,7 +18,15 @@ function CodeList(props) {
 			.catch(() => {
 				setError(true);
 			});
-	}, []);
+
+		fetch(`${APIURL}users/${authToken.username}`)
+			.then((response) => response.json())
+			.then((data) => {
+				setUser(data);
+				console.log(authToken);
+			});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [authToken.username]);
 
 	let filteredCodes = codes.filter((code) => {
 		return code.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1;
@@ -26,15 +35,27 @@ function CodeList(props) {
 	if (error) {
 		return <div>There was an error retrieving the code</div>;
 	}
-
+	console.log(user);
 	return (
 		<div className='box'>
 			{filteredCodes.map((code) => (
 				<Link to={`/code/${code._id}`} key={code._id}>
-					<div className='code-card'>
-						<h2>{code.title}</h2>
-						<img className='code-card-img' src={code.img} alt={code.title} />
-					</div>
+					{user ? (
+						<div
+							className={
+								code.author._id === user._id ? 'user-card' : 'code-card'
+							}>
+							<h2>{code.title}</h2>
+							<img className='code-card-img' src={code.img} alt={code.title} />
+							<h3>Created by: {code.author.email}</h3>
+						</div>
+					) : (
+						<div className='code-card'>
+							<h2>{code.title}</h2>
+							<img className='code-card-img' src={code.img} alt={code.title} />
+							<h3>Created by: {code.author.email}</h3>
+						</div>
+					)}
 				</Link>
 			))}
 		</div>

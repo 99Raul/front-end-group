@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { APIURL } from '../../config';
 import './Login.css';
 // import styles from './Login.module.css'
 
 function Login(props) {
-	const { authToken, setAuthToken } = props;
+	const { authToken, setAuthToken, user, setUser } = props;
 	const initialUser = {
 		username: '',
 		password: '',
 	};
-	const [user, setUser] = useState(initialUser);
+	const [userToken, setUserToken] = useState(initialUser);
 	const [login, setLogin] = useState(false);
 	const [failLogin, setFailLogin] = useState(false);
 
 	const handleChange = (event) => {
 		event.persist();
-		setUser({
-			...user,
+		setUserToken({
+			...userToken,
 			[event.target.name]: event.target.value,
 		});
 	};
@@ -28,16 +28,16 @@ function Login(props) {
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',
 			},
-			body: JSON.stringify(user),
+			body: JSON.stringify(userToken),
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
+				// console.log(data);
 				setAuthToken(data);
 				setLogin(true);
 			})
 			.catch((err) => {
-				console.log(err)
+				console.log(err);
 				setFailLogin(true);
 			});
 	};

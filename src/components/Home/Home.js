@@ -6,7 +6,14 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 
 function Home(props) {
-	const { searchString, setSearchString, authToken, setAuthToken } = props;
+	const {
+		searchString,
+		setSearchString,
+		authToken,
+		setAuthToken,
+		user,
+		setUser,
+	} = props;
 	const [login, setLogin] = useState(false);
 	const [signUp, setSignUp] = useState(false);
 
@@ -17,21 +24,16 @@ function Home(props) {
 	const handleSignUp = () => {
 		setSignUp(!signUp);
 	};
-
 	return (
 		<>
 			<div className='link-container'>
-				{authToken !== null && (
-					<div className='link'>
-						<Link to='/create'>Create New Code</Link>
-					</div>
-				)}
-				{authToken === null && (
+				{authToken !== '' && <h1>{authToken.username}</h1>}
+				{authToken === '' && (
 					<button className='link' onClick={handleLogin}>
 						Login
 					</button>
 				)}
-				{authToken === null && (
+				{authToken === '' && (
 					<button className='link' onClick={handleSignUp}>
 						Sign Up
 					</button>
@@ -48,11 +50,17 @@ function Home(props) {
 						handleLogin={handleLogin}
 						authToken={authToken}
 						setAuthToken={setAuthToken}
+						user={user}
+						setUser={setUser}
 					/>
 				</div>
 			)}
 			<h1>Home Page</h1>
-			<CodeList searchString={searchString} setSearchString={setSearchString} />
+			<CodeList
+				searchString={searchString}
+				setSearchString={setSearchString}
+				authToken={authToken}
+			/>
 		</>
 	);
 }
