@@ -11,37 +11,22 @@ function Home(props) {
 		setSearchString,
 		authToken,
 		setAuthToken,
-		user,
-		setUser,
+		login,
+		signUp,
+		handleLogin,
+		handleSignUp,
 	} = props;
-	const [login, setLogin] = useState(false);
-	const [signUp, setSignUp] = useState(false);
 
-	const handleLogin = () => {
-		setLogin(!login);
-	};
+		const handleAlreadyHaveAccount = () => {
+			handleLogin();
+			handleSignUp();
+		};
 
-	const handleSignUp = () => {
-		setSignUp(!signUp);
-	};
 	return (
 		<>
-			<div className='link-container'>
-				{authToken !== '' && <h1>{authToken.username}</h1>}
-				{authToken === '' && (
-					<button className='link' onClick={handleLogin}>
-						Login
-					</button>
-				)}
-				{authToken === '' && (
-					<button className='link' onClick={handleSignUp}>
-						Sign Up
-					</button>
-				)}
-			</div>
 			{signUp && (
 				<div className='modal'>
-					<Signup handleSignUp={handleSignUp} />
+					<Signup handleSignUp={handleSignUp} handleAlreadyHaveAccount={handleAlreadyHaveAccount} />
 				</div>
 			)}
 			{login && (
@@ -50,8 +35,6 @@ function Home(props) {
 						handleLogin={handleLogin}
 						authToken={authToken}
 						setAuthToken={setAuthToken}
-						user={user}
-						setUser={setUser}
 					/>
 				</div>
 			)}

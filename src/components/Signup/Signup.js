@@ -48,7 +48,6 @@ class Signup extends Component {
 			},
 		};
 	}
-	
 
 	// event propogation
 	// line 54 work on later to create popUp
@@ -116,7 +115,9 @@ class Signup extends Component {
 				{this.state.createdUser && <Redirect to='/login' />}
 				<div className='wrapper'>
 					<div className='form-wrapper'>
-					<button className='close' onClick={this.props.handleSignUp}>X</button>
+						<button className='close' onClick={this.props.handleSignUp}>
+							X
+						</button>
 						<h1>Create Account</h1>
 						<form onSubmit={this.handleSubmit}>
 							<div className='userName'>
@@ -162,7 +163,9 @@ class Signup extends Component {
 							</div>
 							<div className='createAccount'>
 								<button type='submit'>Create Account</button>
-								<Link to='/login'>Already Have an Account?</Link>
+								<Link to='/' onClick={this.props.handleAlreadyHaveAccount}>
+									Already Have an Account?
+								</Link>
 							</div>
 						</form>
 					</div>

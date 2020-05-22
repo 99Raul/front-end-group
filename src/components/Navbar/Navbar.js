@@ -18,7 +18,7 @@ import {
 	Box,
 } from '@material-ui/core';
 
-import { Menu, Home, People, AssignmentInd } from '@material-ui/icons';
+import { Menu, Home, People, Create } from '@material-ui/icons';
 
 // CSS STYLES
 const useStyles = makeStyles((theme) => ({
@@ -39,7 +39,7 @@ const menuItems = [
 		listPath: '/',
 	},
 	{
-		listIcon: <People />,
+		listIcon: <Create />,
 		listText: 'Create Code',
 		listPath: '/create',
 	},
@@ -63,17 +63,53 @@ function Navbar(props) {
 			<Divider />
 
 			<List>
-				{menuItems.map((isItem, key) => (
-					<ListItem button key={key} component={Link} to={isItem.listPath}>
-						<ListItemIcon className={classes.listTextColor}>
-							{isItem.listIcon}
+				{props.authToken !== '' && (
+					<ListItem button component={Link} to='/'>
+						<ListItemIcon>
+							<People />
 						</ListItemIcon>
 						<ListItemText
 							className={classes.listTextColor}
-							primary={isItem.listText}
+							primary={props.authToken.username}
 						/>
 					</ListItem>
-				))}
+				)}
+				{props.authToken === '' && (
+					<>
+						<ListItem button onClick={props.handleLogin}>
+							<ListItemIcon>
+								<People />
+							</ListItemIcon>
+							<ListItemText className={classes.listTextColor} primary='Login' />
+						</ListItem>
+						<ListItem button onClick={props.handleSignUp}>
+							<ListItemIcon>
+								<People />
+							</ListItemIcon>
+							<ListItemText
+								className={classes.listTextColor}
+								primary='Sign Up'
+							/>
+						</ListItem>
+					</>
+				)}
+				<ListItem button component={Link} to='/'>
+					<ListItemIcon>
+						<Home />
+					</ListItemIcon>
+					<ListItemText className={classes.listTextColor} primary='Home' />
+				</ListItem>
+				{props.authToken !== '' && (
+					<ListItem button component={Link} to='/create'>
+						<ListItemIcon>
+							<Create />
+						</ListItemIcon>
+						<ListItemText
+							className={classes.listTextColor}
+							primary='Create Code'
+						/>
+					</ListItem>
+				)}
 			</List>
 		</Box>
 	);

@@ -9,13 +9,17 @@ import { Route, Switch } from 'react-router-dom';
 function App() {
 	const [searchString, setSearchString] = useState('');
 	const [authToken, setAuthToken] = useState('');
-	const [user, setUser] = useState('');
 
-	// useEffect(() => {
-	// 	setUser(authToken);
-	// 	console.log('use effect')
-	// }, [authToken])
+	const [login, setLogin] = useState(false);
+	const [signUp, setSignUp] = useState(false);
 
+	const handleLogin = () => {
+		setLogin(!login);
+	};
+
+	const handleSignUp = () => {
+		setSignUp(!signUp);
+	};
 
 	return (
 		<div className='main'>
@@ -26,6 +30,9 @@ function App() {
 						<Navbar
 							searchString={searchString}
 							setSearchString={setSearchString}
+							authToken={authToken}
+							handleLogin={handleLogin}
+							handleSignUp={handleSignUp}
 						/>
 					);
 				}}
@@ -41,8 +48,10 @@ function App() {
 								setSearchString={setSearchString}
 								authToken={authToken}
 								setAuthToken={setAuthToken}
-								setUser={setUser}
-								user={user}
+								login={login}
+								handleLogin={handleLogin}
+								signUp={signUp}
+								handleSignUp={handleSignUp}
 							/>
 						);
 					}}

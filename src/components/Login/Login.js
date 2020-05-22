@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { APIURL } from '../../config';
 import './Login.css';
 // import styles from './Login.module.css'
 
 function Login(props) {
-	const { authToken, setAuthToken, user, setUser } = props;
+	const { authToken, setAuthToken } = props;
 	const initialUser = {
 		username: '',
 		password: '',
