@@ -52,3 +52,4 @@ Application where users can post and share code snippets. Users can post their o
 - Make contributions
 - Push changes to GitHub
 - Create a Pull Request on the original project
+

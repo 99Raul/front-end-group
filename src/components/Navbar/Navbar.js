@@ -91,6 +91,13 @@ function Navbar(props) {
 					/>
 				</ListItem>
 
+				<ListItem button component={Link} to='/' onClick={props.handleSignOut}>
+					<ListItemIcon>
+						<People />
+					</ListItemIcon>
+					<ListItemText className={classes.listTextColor} primary='Sign Out' />
+				</ListItem>
+
 				<ListItem button component={Link} to='/'>
 					<ListItemIcon>
 						<Home />

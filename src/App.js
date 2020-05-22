@@ -21,6 +21,10 @@ function App() {
 		setSignUp(!signUp);
 	};
 
+	const handleSignOut = () => {
+		setAuthToken('');
+	};
+
 	return (
 		<div className='main'>
 			<Route
@@ -33,6 +37,7 @@ function App() {
 							authToken={authToken}
 							handleLogin={handleLogin}
 							handleSignUp={handleSignUp}
+							handleSignOut={handleSignOut}
 						/>
 					);
 				}}
